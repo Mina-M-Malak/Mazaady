@@ -7,15 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FFE4D6C2A309E4EEF3BA256 /* Pods_MazaadyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58480EA7B5A02DB70EC6FDF4 /* Pods_MazaadyTests.framework */; };
 		312584BD298A7F3100C39F7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584BC298A7F3100C39F7B /* AppDelegate.swift */; };
 		312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584BE298A7F3100C39F7B /* SceneDelegate.swift */; };
-		312584C1298A7F3100C39F7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584C0298A7F3100C39F7B /* ViewController.swift */; };
+		312584C1298A7F3100C39F7B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584C0298A7F3100C39F7B /* BaseViewController.swift */; };
 		312584C4298A7F3100C39F7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312584C2298A7F3100C39F7B /* Main.storyboard */; };
 		312584C6298A7F3200C39F7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 312584C5298A7F3200C39F7B /* Assets.xcassets */; };
 		312584C9298A7F3200C39F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 312584C7298A7F3200C39F7B /* LaunchScreen.storyboard */; };
 		312584D4298A7F3200C39F7B /* MazaadyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584D3298A7F3200C39F7B /* MazaadyTests.swift */; };
 		312584DE298A7F3200C39F7B /* MazaadyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584DD298A7F3200C39F7B /* MazaadyUITests.swift */; };
 		312584E0298A7F3200C39F7B /* MazaadyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584DF298A7F3200C39F7B /* MazaadyUITestsLaunchTests.swift */; };
+		312584F4298A87E600C39F7B /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584F3298A87E600C39F7B /* APIError.swift */; };
+		312584F6298A87F100C39F7B /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584F5298A87F100C39F7B /* APIRoute.swift */; };
+		312584F8298A87F800C39F7B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584F7298A87F800C39F7B /* Result.swift */; };
+		312584FA298A87FF00C39F7B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584F9298A87FF00C39F7B /* Endpoint.swift */; };
+		312584FC298A880E00C39F7B /* Mazaady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584FB298A880E00C39F7B /* Mazaady.swift */; };
+		312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584FD298A8B7B00C39F7B /* SearchViewController.swift */; };
+		31258502298A8BAC00C39F7B /* SearchInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258500298A8BAC00C39F7B /* SearchInputTableViewCell.swift */; };
+		31258503298A8BAC00C39F7B /* SearchInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31258501298A8BAC00C39F7B /* SearchInputTableViewCell.xib */; };
+		31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258507298A8E0100C39F7B /* CategoryModel.swift */; };
+		3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258509298A8FC300C39F7B /* UITableView+Exetnsions.swift */; };
+		3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850B298A91D800C39F7B /* UIView+Extensions.swift */; };
+		3125850E298A970600C39F7B /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850D298A970600C39F7B /* BaseTextField.swift */; };
+		8E14D54A895BAAB9D2873FEB /* Pods_Mazaady_MazaadyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19DADE92430B5E66E1636ECA /* Pods_Mazaady_MazaadyUITests.framework */; };
+		E3DA3D6D3B1404622468677C /* Pods_Mazaady.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61A5155ED46586E62B3DF7B /* Pods_Mazaady.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19DADE92430B5E66E1636ECA /* Pods_Mazaady_MazaadyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mazaady_MazaadyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		312584B9298A7F3100C39F7B /* Mazaady.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mazaady.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		312584BC298A7F3100C39F7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		312584BE298A7F3100C39F7B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		312584C0298A7F3100C39F7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		312584C0298A7F3100C39F7B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		312584C3298A7F3100C39F7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		312584C5298A7F3200C39F7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		312584C8298A7F3200C39F7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +65,26 @@
 		312584D9298A7F3200C39F7B /* MazaadyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazaadyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		312584DD298A7F3200C39F7B /* MazaadyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazaadyUITests.swift; sourceTree = "<group>"; };
 		312584DF298A7F3200C39F7B /* MazaadyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazaadyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		312584F3298A87E600C39F7B /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		312584F5298A87F100C39F7B /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
+		312584F7298A87F800C39F7B /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		312584F9298A87FF00C39F7B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		312584FB298A880E00C39F7B /* Mazaady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mazaady.swift; sourceTree = "<group>"; };
+		312584FD298A8B7B00C39F7B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		31258500298A8BAC00C39F7B /* SearchInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputTableViewCell.swift; sourceTree = "<group>"; };
+		31258501298A8BAC00C39F7B /* SearchInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchInputTableViewCell.xib; sourceTree = "<group>"; };
+		31258507298A8E0100C39F7B /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		31258509298A8FC300C39F7B /* UITableView+Exetnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Exetnsions.swift"; sourceTree = "<group>"; };
+		3125850B298A91D800C39F7B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		3125850D298A970600C39F7B /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		58480EA7B5A02DB70EC6FDF4 /* Pods_MazaadyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MazaadyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		655A27BB6EB25FDF55CE092C /* Pods-Mazaady-MazaadyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mazaady-MazaadyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Mazaady-MazaadyUITests/Pods-Mazaady-MazaadyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		68547907B33067106C796A75 /* Pods-Mazaady.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mazaady.release.xcconfig"; path = "Target Support Files/Pods-Mazaady/Pods-Mazaady.release.xcconfig"; sourceTree = "<group>"; };
+		6CF5FC2F678114269AD66BC0 /* Pods-Mazaady-MazaadyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mazaady-MazaadyUITests.release.xcconfig"; path = "Target Support Files/Pods-Mazaady-MazaadyUITests/Pods-Mazaady-MazaadyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		78955A088DFBD4D122F6C3F1 /* Pods-Mazaady.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mazaady.debug.xcconfig"; path = "Target Support Files/Pods-Mazaady/Pods-Mazaady.debug.xcconfig"; sourceTree = "<group>"; };
+		BBE7E0122FF92652BEE3423F /* Pods-MazaadyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazaadyTests.release.xcconfig"; path = "Target Support Files/Pods-MazaadyTests/Pods-MazaadyTests.release.xcconfig"; sourceTree = "<group>"; };
+		D3597FB89DD2CA336163A40F /* Pods-MazaadyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MazaadyTests.debug.xcconfig"; path = "Target Support Files/Pods-MazaadyTests/Pods-MazaadyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E61A5155ED46586E62B3DF7B /* Pods_Mazaady.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mazaady.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3DA3D6D3B1404622468677C /* Pods_Mazaady.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFE4D6C2A309E4EEF3BA256 /* Pods_MazaadyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E14D54A895BAAB9D2873FEB /* Pods_Mazaady_MazaadyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +122,8 @@
 				312584D2298A7F3200C39F7B /* MazaadyTests */,
 				312584DC298A7F3200C39F7B /* MazaadyUITests */,
 				312584BA298A7F3100C39F7B /* Products */,
+				B52800235A136CFE44FCD270 /* Pods */,
+				DA8ADEB91389C26C3912E466 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +140,13 @@
 		312584BB298A7F3100C39F7B /* Mazaady */ = {
 			isa = PBXGroup;
 			children = (
-				312584BC298A7F3100C39F7B /* AppDelegate.swift */,
-				312584BE298A7F3100C39F7B /* SceneDelegate.swift */,
-				312584C0298A7F3100C39F7B /* ViewController.swift */,
-				312584C2298A7F3100C39F7B /* Main.storyboard */,
-				312584C5298A7F3200C39F7B /* Assets.xcassets */,
-				312584C7298A7F3200C39F7B /* LaunchScreen.storyboard */,
+				312584ED298A7FAD00C39F7B /* AppDelegate */,
+				312584EC298A7F3B00C39F7B /* Network */,
+				312584F2298A877F00C39F7B /* Scenes */,
+				312584F1298A807700C39F7B /* Base */,
+				312584EE298A801600C39F7B /* Extensions */,
+				312584EF298A802400C39F7B /* Assets */,
+				312584F0298A803D00C39F7B /* Storyboards */,
 				312584CA298A7F3200C39F7B /* Info.plist */,
 			);
 			path = Mazaady;
@@ -127,6 +169,128 @@
 			path = MazaadyUITests;
 			sourceTree = "<group>";
 		};
+		312584EC298A7F3B00C39F7B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				312584F3298A87E600C39F7B /* APIError.swift */,
+				312584F5298A87F100C39F7B /* APIRoute.swift */,
+				312584F7298A87F800C39F7B /* Result.swift */,
+				312584F9298A87FF00C39F7B /* Endpoint.swift */,
+				312584FB298A880E00C39F7B /* Mazaady.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		312584ED298A7FAD00C39F7B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				312584BC298A7F3100C39F7B /* AppDelegate.swift */,
+				312584BE298A7F3100C39F7B /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		312584EE298A801600C39F7B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				31258509298A8FC300C39F7B /* UITableView+Exetnsions.swift */,
+				3125850B298A91D800C39F7B /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		312584EF298A802400C39F7B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				312584C5298A7F3200C39F7B /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		312584F0298A803D00C39F7B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				312584C2298A7F3100C39F7B /* Main.storyboard */,
+				312584C7298A7F3200C39F7B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		312584F1298A807700C39F7B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				312584C0298A7F3100C39F7B /* BaseViewController.swift */,
+				3125850D298A970600C39F7B /* BaseTextField.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		312584F2298A877F00C39F7B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				31258505298A8DCA00C39F7B /* Search */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		312584FF298A8B8000C39F7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				31258504298A8BB000C39F7B /* Custom Cells */,
+				312584FD298A8B7B00C39F7B /* SearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		31258504298A8BB000C39F7B /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				31258500298A8BAC00C39F7B /* SearchInputTableViewCell.swift */,
+				31258501298A8BAC00C39F7B /* SearchInputTableViewCell.xib */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		31258505298A8DCA00C39F7B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				31258506298A8DE000C39F7B /* Model */,
+				312584FF298A8B8000C39F7B /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		31258506298A8DE000C39F7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31258507298A8E0100C39F7B /* CategoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B52800235A136CFE44FCD270 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78955A088DFBD4D122F6C3F1 /* Pods-Mazaady.debug.xcconfig */,
+				68547907B33067106C796A75 /* Pods-Mazaady.release.xcconfig */,
+				655A27BB6EB25FDF55CE092C /* Pods-Mazaady-MazaadyUITests.debug.xcconfig */,
+				6CF5FC2F678114269AD66BC0 /* Pods-Mazaady-MazaadyUITests.release.xcconfig */,
+				D3597FB89DD2CA336163A40F /* Pods-MazaadyTests.debug.xcconfig */,
+				BBE7E0122FF92652BEE3423F /* Pods-MazaadyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DA8ADEB91389C26C3912E466 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E61A5155ED46586E62B3DF7B /* Pods_Mazaady.framework */,
+				19DADE92430B5E66E1636ECA /* Pods_Mazaady_MazaadyUITests.framework */,
+				58480EA7B5A02DB70EC6FDF4 /* Pods_MazaadyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312584E3298A7F3200C39F7B /* Build configuration list for PBXNativeTarget "Mazaady" */;
 			buildPhases = (
+				C8C46444EB936157045CDAAF /* [CP] Check Pods Manifest.lock */,
 				312584B5298A7F3100C39F7B /* Sources */,
 				312584B6298A7F3100C39F7B /* Frameworks */,
 				312584B7298A7F3100C39F7B /* Resources */,
+				85FA21C8F53F7076CA793C49 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +317,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312584E6298A7F3200C39F7B /* Build configuration list for PBXNativeTarget "MazaadyTests" */;
 			buildPhases = (
+				B08F7D78C4256F7EF22B87FE /* [CP] Check Pods Manifest.lock */,
 				312584CB298A7F3200C39F7B /* Sources */,
 				312584CC298A7F3200C39F7B /* Frameworks */,
 				312584CD298A7F3200C39F7B /* Resources */,
@@ -169,9 +336,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 312584E9298A7F3200C39F7B /* Build configuration list for PBXNativeTarget "MazaadyUITests" */;
 			buildPhases = (
+				0A0F1297CA76596E34AD8F45 /* [CP] Check Pods Manifest.lock */,
 				312584D5298A7F3200C39F7B /* Sources */,
 				312584D6298A7F3200C39F7B /* Frameworks */,
 				312584D7298A7F3200C39F7B /* Resources */,
+				33BB83C0C82849C3136FA03E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,6 +402,7 @@
 			files = (
 				312584C9298A7F3200C39F7B /* LaunchScreen.storyboard in Resources */,
 				312584C6298A7F3200C39F7B /* Assets.xcassets in Resources */,
+				31258503298A8BAC00C39F7B /* SearchInputTableViewCell.xib in Resources */,
 				312584C4298A7F3100C39F7B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,14 +423,128 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A0F1297CA76596E34AD8F45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mazaady-MazaadyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33BB83C0C82849C3136FA03E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mazaady-MazaadyUITests/Pods-Mazaady-MazaadyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mazaady-MazaadyUITests/Pods-Mazaady-MazaadyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mazaady-MazaadyUITests/Pods-Mazaady-MazaadyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85FA21C8F53F7076CA793C49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mazaady/Pods-Mazaady-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mazaady/Pods-Mazaady-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mazaady/Pods-Mazaady-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B08F7D78C4256F7EF22B87FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MazaadyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8C46444EB936157045CDAAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mazaady-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		312584B5298A7F3100C39F7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				312584C1298A7F3100C39F7B /* ViewController.swift in Sources */,
+				31258502298A8BAC00C39F7B /* SearchInputTableViewCell.swift in Sources */,
+				312584FA298A87FF00C39F7B /* Endpoint.swift in Sources */,
+				3125850E298A970600C39F7B /* BaseTextField.swift in Sources */,
+				312584F8298A87F800C39F7B /* Result.swift in Sources */,
+				312584C1298A7F3100C39F7B /* BaseViewController.swift in Sources */,
+				312584F4298A87E600C39F7B /* APIError.swift in Sources */,
+				3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */,
 				312584BD298A7F3100C39F7B /* AppDelegate.swift in Sources */,
+				312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */,
+				3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */,
+				31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */,
 				312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */,
+				312584F6298A87F100C39F7B /* APIRoute.swift in Sources */,
+				312584FC298A880E00C39F7B /* Mazaady.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +716,7 @@
 		};
 		312584E4298A7F3200C39F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78955A088DFBD4D122F6C3F1 /* Pods-Mazaady.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -440,11 +725,12 @@
 				DEVELOPMENT_TEAM = TVF44C8U64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mazaady/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,14 +738,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mazaady.Mazaady;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		312584E5298A7F3200C39F7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68547907B33067106C796A75 /* Pods-Mazaady.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -468,11 +758,12 @@
 				DEVELOPMENT_TEAM = TVF44C8U64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mazaady/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -480,14 +771,18 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Mazaady.Mazaady;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		312584E7298A7F3200C39F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3597FB89DD2CA336163A40F /* Pods-MazaadyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +803,7 @@
 		};
 		312584E8298A7F3200C39F7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBE7E0122FF92652BEE3423F /* Pods-MazaadyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -528,6 +824,7 @@
 		};
 		312584EA298A7F3200C39F7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 655A27BB6EB25FDF55CE092C /* Pods-Mazaady-MazaadyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +843,7 @@
 		};
 		312584EB298A7F3200C39F7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CF5FC2F678114269AD66BC0 /* Pods-Mazaady-MazaadyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

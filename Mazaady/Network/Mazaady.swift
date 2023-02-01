@@ -1,0 +1,81 @@
+//
+//  Mazaady.swift
+//  Mazaady
+//
+//  Created by Mina Malak on 01/02/2023.
+//
+
+import Foundation
+
+enum Mazaady {
+    case getAllCars
+    case getProperties(subcategoryId: Int)
+}
+
+extension Mazaady: Endpoint {
+    var base: String {
+        return Bundle.main.baseURL
+    }
+    
+    var urlSubFolder: String {
+        return Bundle.main.urlSubFolder
+    }
+    
+    var prefix: String {
+        return Bundle.main.apiPrefix
+    }
+    
+    var path: String {
+        switch self {
+        case .getAllCars:
+            return "get_all_cats"
+        case .getProperties:
+            return "properties"
+        }
+    }
+    
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .getProperties(let subcategoryId):
+            return [URLQueryItem(name: "cat", value: "\(subcategoryId)")]
+        default:
+            return []
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        default :
+            return .get
+        }
+    }
+    
+    var body: [String: Any]? {
+        switch self {
+        default:
+            return nil
+        }
+    }
+}
+
+extension URLRequest {
+    mutating func addHeaders(_ Headers:[httpHeader]){
+        for Header in Headers {
+            self.addValue(Header.value, forHTTPHeaderField: Header.key)
+        }
+    }
+}
+
+extension Bundle {
+    var baseURL: String {
+        return object(forInfoDictionaryKey: "BaseURL") as? String ?? ""
+    }
+    
+    var urlSubFolder: String {
+        return object(forInfoDictionaryKey: "URLSubFolder") as? String ?? ""
+    }
+    
+    var apiPrefix: String {
+        return "/"
+    }
+}
