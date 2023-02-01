@@ -110,6 +110,9 @@ class SearchViewController: UIViewController {
             }
         case .option:
             cell.setOption(option: properties[indexPath.section - 2])
+            cell.didSelectItem = { [weak self] (index) in
+                print("Here")
+            }
         }
         
         return cell as! t

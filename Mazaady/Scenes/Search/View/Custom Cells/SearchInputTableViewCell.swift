@@ -16,8 +16,12 @@ class SearchInputTableViewCell: UITableViewCell {
     private var categories: [Category]?
     private var subcategories: [Subcategory]?{
         didSet{
-            searchInputTextField.text = nil
-            dataPicker.selectRow(0, inComponent: 0, animated: false)
+            resetTextField()
+        }
+    }
+    private var options: [Option]?{
+        didSet{
+            resetTextField()
         }
     }
     private let dataPicker = UIPickerView()
@@ -42,6 +46,11 @@ class SearchInputTableViewCell: UITableViewCell {
         searchInputTextField.delegate = self
     }
     
+    private func resetTextField() {
+        searchInputTextField.text = nil
+        dataPicker.selectRow(0, inComponent: 0, animated: false)
+    }
+    
     func setData(section: SearchViewController.Sections) {
         self.section = section
         searchInputTextField.placeholder =  section.placeholder
@@ -50,6 +59,7 @@ class SearchInputTableViewCell: UITableViewCell {
     func setCategory(categories: [Category],selectedCategoryindex: Int? = nil) {
         self.categories = categories
         if let selectedCategoryindex = selectedCategoryindex{
+            selectedIndex = selectedCategoryindex
             searchInputTextField.text = categories[selectedCategoryindex].name
         }
     }
@@ -57,12 +67,18 @@ class SearchInputTableViewCell: UITableViewCell {
     func setSubcategory(subcategories: [Subcategory],selectedSubcategoryindex: Int? = nil) {
         self.subcategories = subcategories
         if let selectedSubcategoryindex = selectedSubcategoryindex{
+            selectedIndex = selectedSubcategoryindex
             searchInputTextField.text = subcategories[selectedSubcategoryindex].name
         }
     }
     
     func setOption(option: Property) {
         searchInputTextField.placeholder =  option.name
+        options = option.options
+        if option.options.isEmpty {
+            searchInputTextField.inputView = nil
+            arrowImageView.isHidden = true
+        }
     }
     
     private func setPickerLabel(row: Int) -> UILabel {
@@ -76,7 +92,7 @@ class SearchInputTableViewCell: UITableViewCell {
         case .subcategory:
             title = subcategories?[row].name
         default:
-            break
+            title = options?[row].name
         }
         pickerLabel.text = title
         pickerLabel.textColor = .black
@@ -97,7 +113,7 @@ extension SearchInputTableViewCell: UIPickerViewDataSource{
         case .subcategory:
             return subcategories?.count ?? 0
         default:
-            return 0
+            return options?.count ?? 0
         }
     }
     
@@ -116,7 +132,7 @@ extension SearchInputTableViewCell: UIPickerViewDelegate{
         case .subcategory:
             searchInputTextField.text = subcategories?[row].name
         default:
-            break
+            searchInputTextField.text = options?[row].name
         }
     }
     
