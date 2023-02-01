@@ -89,6 +89,21 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private func fetchChildOptions(indexPath: IndexPath) {
+        guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
+        APIRoute.shared.fetch(with: .getProperties(subcategoryId: categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id), model: APIResponse<[Property]>.self) { [weak self] (response) in
+            guard let strongSelf = self else { return }
+            switch response{
+            case .success(let data):
+                strongSelf.properties = data.data
+                strongSelf.sections.append(contentsOf: Sections.AllCases(repeating: .option, count: strongSelf.properties.count))
+                strongSelf.searchTableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
         let cell = searchTableView.dequeueCell(tabelViewCell: SearchInputTableViewCell.self, indexPath: indexPath)
         cell.setData(section: sections[indexPath.section])
@@ -111,13 +126,16 @@ class SearchViewController: UIViewController {
                 self?.selectedSubcategoryIndex = index
             }
         case .option:
-            cell.setOption(property: properties[indexPath.section - 2],selectedPropertyName: properties[indexPath.section - 2].selectedOption?.name)
+            cell.setOption(property: properties[indexPath.section - 2],selectedPropertyName: properties[indexPath.section - 2].selectedOption?.name , showOther: properties[indexPath.section - 2].selectedOption?.id == 0)
             cell.didSelectItem = { [weak self] (index) in
                 if (self?.properties[indexPath.section - 2].options.count ?? 0) > index {
                     self?.properties[indexPath.section - 2].selectedOption = self?.properties[indexPath.section - 2].options[index]
+                    if (self?.properties[indexPath.section - 2].options[index].child ?? false){
+                        // get childs
+                    }
                 }
                 else{
-                    self?.properties[indexPath.section - 2].selectedOption = Option(id: 0, name: "Other", slug: "Other")
+                    self?.properties[indexPath.section - 2].selectedOption = Option(id: 0, name: "Other", slug: "Other", child: false)
                 }
             }
         }

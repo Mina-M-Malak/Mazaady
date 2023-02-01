@@ -38,4 +38,5 @@ struct Option: Decodable{
     let id: Int
     let name: String
     let slug: String
+    let child: Bool
 }
