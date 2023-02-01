@@ -19,14 +19,11 @@ class SearchInputTableViewCell: UITableViewCell {
             resetTextField()
         }
     }
-    private var options: [Option]?{
-        didSet{
-            resetTextField()
-        }
-    }
+    private var options: [Option]?
     private let dataPicker = UIPickerView()
     private var section: SearchViewController.Sections?
     var didSelectItem: ((_ index: Int)->())?
+    var reloadCellHeight: (()->())?
     private var selectedIndex: Int?
     
     override func awakeFromNib() {
@@ -44,6 +41,8 @@ class SearchInputTableViewCell: UITableViewCell {
         
         searchInputTextField.inputView = dataPicker
         searchInputTextField.delegate = self
+        
+        otherTextField.placeholder = "Spacify here"
     }
     
     private func resetTextField() {
@@ -72,12 +71,16 @@ class SearchInputTableViewCell: UITableViewCell {
         }
     }
     
-    func setOption(option: Property) {
-        searchInputTextField.placeholder =  option.name
-        options = option.options
-        if option.options.isEmpty {
+    func setOption(property: Property,selectedPropertyName: String? = nil) {
+        searchInputTextField.placeholder =  property.name
+        searchInputTextField.text = selectedPropertyName
+        options = property.options
+        if property.options.isEmpty {
             searchInputTextField.inputView = nil
             arrowImageView.isHidden = true
+        }
+        else if property.options.last?.id != 0 {
+            options?.append(Option(id: 0, name: "Other", slug: "Other"))
         }
     }
     
@@ -132,7 +135,7 @@ extension SearchInputTableViewCell: UIPickerViewDelegate{
         case .subcategory:
             searchInputTextField.text = subcategories?[row].name
         default:
-            searchInputTextField.text = options?[row].name
+            searchInputTextField.text = options?[row].name ?? "Other"
         }
     }
     
@@ -144,7 +147,7 @@ extension SearchInputTableViewCell: UIPickerViewDelegate{
 //MARK: - UITextFieldDelegate
 extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        guard (textField.text?.isEmpty ?? true) , let defaultValue = categories?.first?.name ?? subcategories?.first?.name else { return }
+        guard (textField.text?.isEmpty ?? true) , let defaultValue = categories?.first?.name ?? subcategories?.first?.name ?? options?.first?.name else { return }
         textField.text = defaultValue
         selectedIndex = 0
     }
@@ -152,5 +155,13 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let selectedIndex = selectedIndex else { return }
         didSelectItem?(selectedIndex)
+        if section == .option , options?[selectedIndex].id == 0 , otherTextField.isHidden{
+            otherTextField.isHidden = false
+            reloadCellHeight?()
+        }
+        else if !otherTextField.isHidden {
+            otherTextField.isHidden = true
+            reloadCellHeight?()
+        }
     }
 }

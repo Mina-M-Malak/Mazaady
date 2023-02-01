@@ -47,12 +47,7 @@ class SearchViewController: UIViewController {
             searchTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
     }
-    private var properties: [Property] = []{
-        didSet{
-            sections.append(contentsOf: Sections.AllCases(repeating: .option, count: properties.count))
-            searchTableView.reloadData()
-        }
-    }
+    private var properties: [Property] = []
     
     private var sections: [Sections] = [.category,.subcategory]
     
@@ -82,9 +77,12 @@ class SearchViewController: UIViewController {
     private func fetchProperties() {
         guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
         APIRoute.shared.fetch(with: .getProperties(subcategoryId: categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id), model: APIResponse<[Property]>.self) { [weak self] (response) in
+            guard let strongSelf = self else { return }
             switch response{
             case .success(let data):
-                self?.properties = data.data
+                strongSelf.properties = data.data
+                strongSelf.sections.append(contentsOf: Sections.AllCases(repeating: .option, count: strongSelf.properties.count))
+                strongSelf.searchTableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -94,6 +92,10 @@ class SearchViewController: UIViewController {
     func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
         let cell = searchTableView.dequeueCell(tabelViewCell: SearchInputTableViewCell.self, indexPath: indexPath)
         cell.setData(section: sections[indexPath.section])
+        cell.reloadCellHeight = { [weak self] in
+            self?.searchTableView.beginUpdates()
+            self?.searchTableView.endUpdates()
+        }
         switch sections[indexPath.section] {
         case .category:
             cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
@@ -109,9 +111,14 @@ class SearchViewController: UIViewController {
                 self?.selectedSubcategoryIndex = index
             }
         case .option:
-            cell.setOption(option: properties[indexPath.section - 2])
+            cell.setOption(property: properties[indexPath.section - 2],selectedPropertyName: properties[indexPath.section - 2].selectedOption?.name)
             cell.didSelectItem = { [weak self] (index) in
-                print("Here")
+                if (self?.properties[indexPath.section - 2].options.count ?? 0) > index {
+                    self?.properties[indexPath.section - 2].selectedOption = self?.properties[indexPath.section - 2].options[index]
+                }
+                else{
+                    self?.properties[indexPath.section - 2].selectedOption = Option(id: 0, name: "Other", slug: "Other")
+                }
             }
         }
         
