@@ -36,11 +36,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kpf-bz-r5t">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="hew-Ml-GEg">
+                        <barButtonItem key="leftBarButtonItem" title="Item Details" id="hew-Ml-GEg">
                             <connections>
                                 <segue destination="Pae-b3-fJ5" kind="show" id="QyQ-Au-ram"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="bDV-ck-i2s"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchTableView" destination="3aG-7Z-44K" id="mSe-8Q-G8e"/>

@@ -31,6 +31,22 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAm-aq-5AJ">
+                        <rect key="frame" x="159.66666666666666" y="240.33333333333334" width="115.66666666666666" height="30.000000000000028"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="U6o-4D-pfo">
+                                <rect key="frame" x="0.0" y="2" width="115.66666666666667" height="26"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="U6o-4D-pfo" firstAttribute="leading" secondItem="VAm-aq-5AJ" secondAttribute="leading" id="1f6-4J-S6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="U6o-4D-pfo" secondAttribute="trailing" id="4RZ-fb-gXv"/>
+                            <constraint firstItem="U6o-4D-pfo" firstAttribute="top" secondItem="VAm-aq-5AJ" secondAttribute="top" constant="2" id="549-cy-fQ1"/>
+                            <constraint firstAttribute="bottom" secondItem="U6o-4D-pfo" secondAttribute="bottom" constant="2" id="W2I-5c-CrT"/>
+                        </constraints>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tNz-to-Lak">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="300"/>
                         <subviews>
@@ -383,6 +399,7 @@
                     <constraint firstAttribute="bottom" secondItem="wjJ-eq-Hxh" secondAttribute="bottom" id="5MD-7g-t7E"/>
                     <constraint firstItem="LU4-g4-zKe" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="72v-Zy-AWE"/>
                     <constraint firstItem="R6M-UX-QmG" firstAttribute="leading" secondItem="O9y-gX-Wiv" secondAttribute="leading" id="CPY-xK-kEc"/>
+                    <constraint firstItem="VAm-aq-5AJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Dj4-fe-EW1"/>
                     <constraint firstItem="ppR-Hy-7bd" firstAttribute="leading" secondItem="5gH-3S-fYY" secondAttribute="trailing" constant="8" id="Dsm-Xg-CDK"/>
                     <constraint firstItem="32r-4V-bUT" firstAttribute="leading" secondItem="KdY-tW-Mdi" secondAttribute="leading" id="EOe-3b-tzF"/>
                     <constraint firstItem="MsM-lc-RAJ" firstAttribute="centerY" secondItem="32r-4V-bUT" secondAttribute="centerY" id="H3E-kN-i4n"/>
@@ -396,6 +413,7 @@
                     <constraint firstAttribute="trailing" secondItem="wjJ-eq-Hxh" secondAttribute="trailing" id="UHQ-84-3GV"/>
                     <constraint firstItem="sP3-2l-3As" firstAttribute="centerY" secondItem="KdY-tW-Mdi" secondAttribute="centerY" id="VxS-st-3SB"/>
                     <constraint firstItem="zcf-gI-foS" firstAttribute="leading" secondItem="MsM-lc-RAJ" secondAttribute="trailing" constant="8" id="YkE-1y-usp"/>
+                    <constraint firstItem="LU4-g4-zKe" firstAttribute="top" secondItem="VAm-aq-5AJ" secondAttribute="bottom" constant="8" id="YzZ-ZR-uSE"/>
                     <constraint firstItem="E7M-e5-s1T" firstAttribute="leading" secondItem="ppR-Hy-7bd" secondAttribute="trailing" constant="8" id="ZEk-hZ-Rbo"/>
                     <constraint firstItem="ppR-Hy-7bd" firstAttribute="centerY" secondItem="5gH-3S-fYY" secondAttribute="centerY" id="b4r-IZ-8da"/>
                     <constraint firstItem="5gH-3S-fYY" firstAttribute="top" secondItem="R6M-UX-QmG" secondAttribute="bottom" constant="24" id="cbQ-Gt-hNs"/>
@@ -421,6 +439,8 @@
                 <outlet property="cancelButton" destination="vap-Xi-0KC" id="Ezf-Sz-K5d"/>
                 <outlet property="dateView" destination="LU4-g4-zKe" id="HeB-Sk-74n"/>
                 <outlet property="itemVideosCollectionView" destination="6lg-Jq-YmE" id="bRK-qt-E5f"/>
+                <outlet property="pageController" destination="U6o-4D-pfo" id="YXe-fT-Unk"/>
+                <outlet property="pageControllerView" destination="VAm-aq-5AJ" id="qrb-be-D4y"/>
                 <outlet property="priceView" destination="wjJ-eq-Hxh" id="1dn-hi-DQS"/>
             </connections>
             <point key="canvasLocation" x="28.244274809160306" y="144.01408450704227"/>
