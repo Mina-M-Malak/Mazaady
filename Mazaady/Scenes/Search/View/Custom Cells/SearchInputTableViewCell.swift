@@ -24,7 +24,6 @@ class SearchInputTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     private func setupUI() {
@@ -50,12 +49,12 @@ class SearchInputTableViewCell: UITableViewCell {
         self.categories = categories
         otherTextField.isHidden = true
         arrowImageView.isHidden = false
-        if let selectedCategoryindex = selectedCategoryindex{
+        if let selectedCategoryindex = selectedCategoryindex {
             selectedIndex = selectedCategoryindex
             searchInputTextField.text = categories[selectedCategoryindex].name
             dataPicker.selectRow(selectedCategoryindex, inComponent: 0, animated: false)
         }
-        else{
+        else {
             searchInputTextField.text = nil
             dataPicker.selectRow(0, inComponent: 0, animated: false)
         }

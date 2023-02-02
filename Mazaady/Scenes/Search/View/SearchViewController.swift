@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
+    let viewModel = SearchViewModel()
+    
     private var selectedCategoryIndex: Int?{
         didSet{
             if sections.contains(.option){
@@ -26,7 +28,10 @@ class SearchViewController: UIViewController {
     
     private var selectedSubcategoryIndex: Int?{
         didSet{
-            fetchProperties()
+            guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
+            sections.removeAll(where: {$0 == .option})
+            let subcategoryId = categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id
+            viewModel.fetchProperties(subcategoryId: subcategoryId)
         }
     }
     
@@ -37,12 +42,14 @@ class SearchViewController: UIViewController {
     }
     private var properties: [Property] = []
     private var sections: [SearchSections] = [.category,.subcategory]
+    private var loadedSectionIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        fetchData()
+        viewModel.fetchData()
+        setObservers()
     }
     
     private func setupUI() {
@@ -56,49 +63,26 @@ class SearchViewController: UIViewController {
         searchTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
     
-    private func fetchData() {
-        self.handleRefreshControl(true)
-        APIRoute.shared.fetch(with: .getAllCars, model: APIResponse<CategoriesData>.self) { [weak self] (response) in
-            self?.handleRefreshControl(false)
-            switch response{
-            case .success(let data):
-                self?.categories = data.data.categories
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+    private func setObservers() {
+        viewModel.showLoader = { [weak self] (isLoading) in
+            self?.handleRefreshControl(isLoading)
         }
-    }
-    
-    private func fetchProperties() {
-        guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
-        sections.removeAll(where: {$0 == .option})
-        self.handleRefreshControl(true)
-        APIRoute.shared.fetch(with: .getProperties(subcategoryId: categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id), model: APIResponse<[Property]>.self) { [weak self] (response) in
-            guard let strongSelf = self else { return }
-            strongSelf.handleRefreshControl(false)
-            switch response{
-            case .success(let data):
-                strongSelf.properties = data.data
-                strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
-                strongSelf.searchTableView.reloadData()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        
+        viewModel.getCategories = { [weak self] (categories) in
+            self?.categories = categories
         }
-    }
-    
-    private func fetchChildOptions(propertyId: Int,propertyIndex: Int) {
-        self.handleRefreshControl(true)
-        APIRoute.shared.fetch(with: .getChildOptions(optionId: propertyId), model: APIResponse<[Property]>.self) { [weak self] (response) in
+        
+        viewModel.getProperties = { [weak self] (properties) in
             guard let strongSelf = self else { return }
-            strongSelf.handleRefreshControl(false)
-            switch response{
-            case .success(let data):
-                strongSelf.properties[propertyIndex - 2].child = data.data
-                strongSelf.searchTableView.reloadSections(IndexSet(integer: propertyIndex), with: .automatic)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+            strongSelf.properties = properties
+            strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
+            strongSelf.searchTableView.reloadData()
+        }
+        
+        viewModel.getChildOptions = { [weak self] (options) in
+            guard let loadedSectionIndex = self?.loadedSectionIndex else { return }
+            self?.properties[loadedSectionIndex].child = options
+            self?.searchTableView.reloadSections(IndexSet(integer: loadedSectionIndex + 2), with: .automatic)
         }
     }
     
@@ -152,7 +136,8 @@ class SearchViewController: UIViewController {
                         self?.properties[section].selectedOptionIndex = index
                         if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
                             // get childs
-                            self?.fetchChildOptions(propertyId: propertyId, propertyIndex: indexPath.section)
+                            self?.loadedSectionIndex = section
+                            self?.viewModel.fetchChildOptions(propertyId: propertyId)
                         }
                     }
                     else{
