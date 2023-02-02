@@ -145,7 +145,11 @@ class SearchViewController: UIViewController {
     private func setupCategoryCell(cell: SearchInputTableViewCell) {
         cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
         cell.didSelectItem = { [weak self] (index) in
+            guard index != self?.selectedCategoryIndex else { return }
             self?.selectedSubcategoryIndex = nil
+            if let sectionIndex = SearchSections.allCases.firstIndex(where: {$0 == .subcategory}){
+                self?.searchTableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+            }
             self?.selectedCategoryIndex = index
         }
     }
@@ -170,6 +174,7 @@ class SearchViewController: UIViewController {
             if indexPath.row == 0 {
                 // Main Prop
                 if (self?.properties[section].options.count ?? 0) > index {
+                    guard self?.properties[section].selectedOptionIndex != index else { return }
                     self?.properties[section].selectedOptionIndex = index
                     if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
                         // get childs
