@@ -17,7 +17,7 @@ class SearchInputTableViewCell: UITableViewCell {
     private var subcategories: [Subcategory]?
     private var options: [Option]?
     private let dataPicker = UIPickerView()
-    private var section: SearchViewController.Sections?
+    private var section: SearchSections?
     var didSelectItem: ((_ index: Int)->())?
     var reloadCellHeight: (()->())?
     private var selectedIndex: Int?
@@ -40,7 +40,7 @@ class SearchInputTableViewCell: UITableViewCell {
         otherTextField.placeholder = "Spacify here"
     }
     
-    func setData(section: SearchViewController.Sections) {
+    func setData(section: SearchSections) {
         setupUI()
         self.section = section
         searchInputTextField.placeholder =  section.placeholder
@@ -120,7 +120,7 @@ class SearchInputTableViewCell: UITableViewCell {
 }
 
 //MARK: - UIPickerViewDataSource
-extension SearchInputTableViewCell: UIPickerViewDataSource{
+extension SearchInputTableViewCell: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -142,7 +142,7 @@ extension SearchInputTableViewCell: UIPickerViewDataSource{
 }
 
 //MARK: - UIPickerViewDelegate
-extension SearchInputTableViewCell: UIPickerViewDelegate{
+extension SearchInputTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedIndex = row
         switch section {

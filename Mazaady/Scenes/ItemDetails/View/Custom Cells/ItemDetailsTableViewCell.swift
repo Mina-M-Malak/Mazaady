@@ -9,6 +9,7 @@ import UIKit
 
 class ItemDetailsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -22,6 +23,8 @@ class ItemDetailsTableViewCell: UITableViewCell {
     private func setupUI() {
         buyButton.makeRoundedCornersWith(radius: 8.0)
         cancelButton.makeRoundedCornersWith(radius: 8.0)
+        dateView.makeRoundedCornersWith(radius: 16.0)
+        dateView.setShadow(shadowColoe: .gray, cornerRadius: 16.0, shadowRadius: 2.0, shadowOpacity: 0.5, width: 0, height: 1.0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

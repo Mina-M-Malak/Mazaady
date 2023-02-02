@@ -9,23 +9,6 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    enum Sections: CaseIterable{
-        case category
-        case subcategory
-        case option
-        
-        var placeholder: String {
-            switch self{
-            case .category:
-                return "Category"
-            case .subcategory:
-                return "Subcategory"
-            case .option:
-                return ""
-            }
-        }
-    }
-    
     @IBOutlet weak var searchTableView: UITableView!
     private let refreshControl = UIRefreshControl()
     
@@ -53,7 +36,7 @@ class SearchViewController: UIViewController {
         }
     }
     private var properties: [Property] = []
-    private var sections: [Sections] = [.category,.subcategory]
+    private var sections: [SearchSections] = [.category,.subcategory]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +79,7 @@ class SearchViewController: UIViewController {
             switch response{
             case .success(let data):
                 strongSelf.properties = data.data
-                strongSelf.sections.append(contentsOf: Sections.AllCases(repeating: .option, count: strongSelf.properties.count))
+                strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
                 strongSelf.searchTableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
@@ -158,29 +141,30 @@ class SearchViewController: UIViewController {
                 self?.selectedSubcategoryIndex = index
             }
         case .option:
-            if let option = (indexPath.row == 0) ? properties[indexPath.section - 2] : properties[indexPath.section - 2].child?[indexPath.row - 1] {
+            let section = indexPath.section - 2
+            if let option = (indexPath.row == 0) ? properties[section] : properties[section].child?[indexPath.row - 1] {
                 cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: option.selectedOptionIndex == -1)
             }
             
             cell.didSelectItem = { [weak self] (index) in
                 if indexPath.row == 0 {
-                    if (self?.properties[indexPath.section - 2].options.count ?? 0) > index {
-                        self?.properties[indexPath.section - 2].selectedOptionIndex = index
-                        if (self?.properties[indexPath.section - 2].options[index].child ?? false) , let propertyId = self?.properties[indexPath.section - 2].options[index].id {
+                    if (self?.properties[section].options.count ?? 0) > index {
+                        self?.properties[section].selectedOptionIndex = index
+                        if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
                             // get childs
                             self?.fetchChildOptions(propertyId: propertyId, propertyIndex: indexPath.section)
                         }
                     }
                     else{
-                        self?.properties[indexPath.section - 2].selectedOptionIndex = -1
+                        self?.properties[section].selectedOptionIndex = -1
                     }
                 }
                 else{
-                    if (self?.properties[indexPath.section - 2].child?[indexPath.row - 1].options.count ?? 0) > index {
-                        self?.properties[indexPath.section - 2].child?[indexPath.row - 1].selectedOptionIndex = index
+                    if (self?.properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
+                        self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
                     }
                     else{
-                        self?.properties[indexPath.section - 2].child?[indexPath.row - 1].selectedOptionIndex = -1
+                        self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
                     }
                 }
             }

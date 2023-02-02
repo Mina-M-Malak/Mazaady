@@ -32,6 +32,10 @@
 		313FB5DE298BE554009AA68C /* UICollectionView+Exetnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FB5DD298BE554009AA68C /* UICollectionView+Exetnsions.swift */; };
 		3167A4B4298BEB6E00384B99 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4B3298BEB6E00384B99 /* GradientView.swift */; };
 		3167A4B6298BED4800384B99 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4B5298BED4800384B99 /* GradientButton.swift */; };
+		3167A4B9298BF0E800384B99 /* SearchSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4B8298BF0E800384B99 /* SearchSections.swift */; };
+		3167A4BC298BF45900384B99 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4BA298BF45900384B99 /* PriceCollectionViewCell.swift */; };
+		3167A4BD298BF45900384B99 /* PriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4BB298BF45900384B99 /* PriceCollectionViewCell.xib */; };
+		3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C0298BF8ED00384B99 /* DashedView.swift */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -94,6 +98,10 @@
 		313FB5DD298BE554009AA68C /* UICollectionView+Exetnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Exetnsions.swift"; sourceTree = "<group>"; };
 		3167A4B3298BEB6E00384B99 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3167A4B5298BED4800384B99 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		3167A4B8298BF0E800384B99 /* SearchSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSections.swift; sourceTree = "<group>"; };
+		3167A4BA298BF45900384B99 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		3167A4BB298BF45900384B99 /* PriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollectionViewCell.xib; sourceTree = "<group>"; };
+		3167A4C0298BF8ED00384B99 /* DashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -285,6 +293,7 @@
 		31258505298A8DCA00C39F7B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				3167A4B7298BF0CE00384B99 /* Enums */,
 				31258506298A8DE000C39F7B /* Model */,
 				312584FF298A8B8000C39F7B /* View */,
 			);
@@ -304,8 +313,17 @@
 			children = (
 				3167A4B3298BEB6E00384B99 /* GradientView.swift */,
 				3167A4B5298BED4800384B99 /* GradientButton.swift */,
+				3167A4C0298BF8ED00384B99 /* DashedView.swift */,
 			);
 			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		3167A4B7298BF0CE00384B99 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3167A4B8298BF0E800384B99 /* SearchSections.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		31B29E23298BC45F0065B183 /* ItemDetails */ = {
@@ -338,6 +356,8 @@
 				31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */,
 				31B29E38298BCAFB0065B183 /* RecommendedItemCollectionViewCell.swift */,
 				31B29E39298BCAFB0065B183 /* RecommendedItemCollectionViewCell.xib */,
+				3167A4BA298BF45900384B99 /* PriceCollectionViewCell.swift */,
+				3167A4BB298BF45900384B99 /* PriceCollectionViewCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -478,6 +498,7 @@
 				31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */,
 				312584C9298A7F3200C39F7B /* LaunchScreen.storyboard in Resources */,
 				312584C6298A7F3200C39F7B /* Assets.xcassets in Resources */,
+				3167A4BD298BF45900384B99 /* PriceCollectionViewCell.xib in Resources */,
 				31258503298A8BAC00C39F7B /* SearchInputTableViewCell.xib in Resources */,
 				31B29E37298BCADC0065B183 /* ItemDetailsTableViewCell.xib in Resources */,
 				31B29E3B298BCAFB0065B183 /* RecommendedItemCollectionViewCell.xib in Resources */,
@@ -623,12 +644,15 @@
 				312584C1298A7F3100C39F7B /* BaseViewController.swift in Sources */,
 				31B29E32298BCAC70065B183 /* BuyerTableViewCell.swift in Sources */,
 				31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */,
+				3167A4B9298BF0E800384B99 /* SearchSections.swift in Sources */,
 				312584F4298A87E600C39F7B /* APIError.swift in Sources */,
 				3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */,
+				3167A4BC298BF45900384B99 /* PriceCollectionViewCell.swift in Sources */,
 				312584BD298A7F3100C39F7B /* AppDelegate.swift in Sources */,
 				312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */,
 				3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */,
 				31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */,
+				3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */,
 				312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */,
 				312584F6298A87F100C39F7B /* APIRoute.swift in Sources */,
 				312584FC298A880E00C39F7B /* Mazaady.swift in Sources */,
