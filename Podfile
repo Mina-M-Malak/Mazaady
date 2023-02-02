@@ -8,7 +8,8 @@ target 'Mazaady' do
   # Pods for Mazaady
     
     pod 'IQKeyboardManagerSwift'
-
+    pod 'Cosmos'
+    
   target 'MazaadyTests' do
     inherit! :search_paths
     # Pods for testing

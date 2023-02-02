@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="315" id="KGk-i7-Jjw" customClass="RecommendedItemsTableViewCell" customModule="Mazaady" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="485" height="315"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="485" height="315"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recommendedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WC5-HY-EjF">
+                        <rect key="frame" x="16" y="16" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="WC5-HY-EjF" secondAttribute="height" multiplier="1:1" id="FZ7-rZ-zPE"/>
+                            <constraint firstAttribute="width" constant="24" id="GU4-sG-yYt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منتجات متشابهة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MQ-ic-6kF">
+                        <rect key="frame" x="43.999999999999993" y="18.333333333333336" width="103.33333333333331" height="19.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5MN-qW-NFj">
+                        <rect key="frame" x="445" y="18" width="24" height="20.333333333333329"/>
+                        <color key="tintColor" red="0.82352948189999997" green="0.02352941222" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="yYH-Tb-VtR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عرض الكل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qad-ly-Jtr">
+                        <rect key="frame" x="377.33333333333331" y="18.333333333333336" width="63.666666666666686" height="19.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.82352948189999997" green="0.02352941222" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-HB-5tt">
+                        <rect key="frame" x="0.0" y="56" width="485" height="250"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="250" id="YQX-Ed-TGQ"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KHP-KN-KZb">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7MQ-ic-6kF" firstAttribute="leading" secondItem="WC5-HY-EjF" secondAttribute="trailing" constant="4" id="5Xe-zP-tgK"/>
+                    <constraint firstItem="5MN-qW-NFj" firstAttribute="leading" secondItem="Qad-ly-Jtr" secondAttribute="trailing" constant="4" id="5uR-A8-HR1"/>
+                    <constraint firstItem="Qad-ly-Jtr" firstAttribute="centerY" secondItem="5MN-qW-NFj" secondAttribute="centerY" id="E99-YH-DFQ"/>
+                    <constraint firstItem="7MQ-ic-6kF" firstAttribute="centerY" secondItem="WC5-HY-EjF" secondAttribute="centerY" id="FSY-aK-Gum"/>
+                    <constraint firstItem="yfc-HB-5tt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NO9-lK-CbJ"/>
+                    <constraint firstAttribute="trailing" secondItem="yfc-HB-5tt" secondAttribute="trailing" id="Nvj-Mt-9uI"/>
+                    <constraint firstItem="WC5-HY-EjF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="VBQ-Od-wwl"/>
+                    <constraint firstItem="WC5-HY-EjF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="gKh-JP-xYM"/>
+                    <constraint firstItem="5MN-qW-NFj" firstAttribute="width" secondItem="5MN-qW-NFj" secondAttribute="height" multiplier="1:1" id="jm3-FS-7vv"/>
+                    <constraint firstAttribute="trailing" secondItem="5MN-qW-NFj" secondAttribute="trailing" constant="16" id="t04-Ll-2er"/>
+                    <constraint firstItem="yfc-HB-5tt" firstAttribute="top" secondItem="WC5-HY-EjF" secondAttribute="bottom" constant="16" id="tF4-Qd-HHX"/>
+                    <constraint firstItem="5MN-qW-NFj" firstAttribute="centerY" secondItem="WC5-HY-EjF" secondAttribute="centerY" id="uqA-Yg-X2X"/>
+                    <constraint firstAttribute="bottom" secondItem="yfc-HB-5tt" secondAttribute="bottom" constant="24" id="wxe-En-eKu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="recommendedItemsCollectionView" destination="yfc-HB-5tt" id="G6c-WH-rk4"/>
+            </connections>
+            <point key="canvasLocation" x="-12.977099236641221" y="-35.563380281690144"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="recommendedIcon" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

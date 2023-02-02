@@ -69,6 +69,8 @@ class SearchViewController: UIViewController {
         
         searchTableView.refreshControl = refreshControl
         searchTableView.registerCell(tabelViewCell: SearchInputTableViewCell.self)
+        
+        searchTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
     
     private func fetchData() {

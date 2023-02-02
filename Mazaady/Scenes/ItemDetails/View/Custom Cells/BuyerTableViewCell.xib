@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="122" id="KGk-i7-Jjw" customClass="BuyerTableViewCell" customModule="Mazaady" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="580" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="580" height="122"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسم المزايد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXh-mu-Ugo">
+                        <rect key="frame" x="82" y="28" width="73.666666666666686" height="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:59:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zD-fg-7qv">
+                        <rect key="frame" x="82" y="52" width="57" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sellerIcon 1" translatesAutoresizingMaskIntoConstraints="NO" id="c6b-Gz-tw3">
+                        <rect key="frame" x="24" y="24" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="UBq-kO-dZI"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoO-17-Sav">
+                        <rect key="frame" x="506" y="34" width="50" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.95686274770000002" blue="0.83137255909999996" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="gBh-ek-aYL"/>
+                            <constraint firstAttribute="width" constant="50" id="gUb-gD-H3I"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" systemColor="systemYellowColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c6b-Gz-tw3" firstAttribute="width" secondItem="c6b-Gz-tw3" secondAttribute="height" multiplier="1:1" id="5JY-Kd-GFH"/>
+                    <constraint firstAttribute="trailing" secondItem="BoO-17-Sav" secondAttribute="trailing" constant="24" id="BPz-lX-I5G"/>
+                    <constraint firstItem="c6b-Gz-tw3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="E25-7b-m4n"/>
+                    <constraint firstItem="BXh-mu-Ugo" firstAttribute="leading" secondItem="c6b-Gz-tw3" secondAttribute="trailing" constant="8" id="G18-oJ-ifl"/>
+                    <constraint firstItem="c6b-Gz-tw3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="arj-jX-6UR"/>
+                    <constraint firstItem="BoO-17-Sav" firstAttribute="centerY" secondItem="c6b-Gz-tw3" secondAttribute="centerY" id="hiM-MK-tdp"/>
+                    <constraint firstItem="8zD-fg-7qv" firstAttribute="leading" secondItem="BXh-mu-Ugo" secondAttribute="leading" id="kJQ-Sf-ONP"/>
+                    <constraint firstItem="BXh-mu-Ugo" firstAttribute="top" secondItem="c6b-Gz-tw3" secondAttribute="top" constant="4" id="mKk-jK-9yc"/>
+                    <constraint firstItem="8zD-fg-7qv" firstAttribute="top" secondItem="BXh-mu-Ugo" secondAttribute="bottom" constant="4" id="wwz-Jl-RmI"/>
+                    <constraint firstAttribute="bottom" secondItem="c6b-Gz-tw3" secondAttribute="bottom" constant="24" id="z7N-Q3-aes"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="337.40458015267177" y="-28.87323943661972"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sellerIcon 1" width="44" height="44"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
