@@ -14,11 +14,6 @@ class ItemVideosCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupUI()
-    }
-    
-    private func setupUI() {
         timeLabel.makeRoundedCornersWith(radius: 8.0)
     }
-
 }

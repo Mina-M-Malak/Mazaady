@@ -118,7 +118,7 @@ class SearchViewController: UIViewController {
         refreshControl.endRefreshing()
     }
     
-    func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
+    private func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
         let cell = searchTableView.dequeueCell(tabelViewCell: SearchInputTableViewCell.self, indexPath: indexPath)
         cell.setData(section: sections[indexPath.section])
         cell.reloadCellHeight = { [weak self] in

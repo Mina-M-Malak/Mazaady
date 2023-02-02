@@ -9,13 +9,6 @@ import UIKit
 
 class ItemDetailsViewController: UIViewController {
     
-    enum Sections: CaseIterable {
-        case item
-        case buyer
-        case seller
-        case recommended
-    }
-    
     @IBOutlet weak var itemDetailsTableView: UITableView!
     @IBOutlet weak var priceTextField: BaseTextField!
     @IBOutlet weak var priceView: UIView!
@@ -42,16 +35,29 @@ class ItemDetailsViewController: UIViewController {
         
         pricesCollectionView.registerCell(collectionViewCell: PriceCollectionViewCell.self)
     }
+    
+    private func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
+        switch DetailsSections.allCases[indexPath.section] {
+        case .item:
+            return itemDetailsTableView.dequeueCell(tabelViewCell: ItemDetailsTableViewCell.self, indexPath: indexPath) as! t
+        case .buyer:
+            return  itemDetailsTableView.dequeueCell(tabelViewCell: BuyerTableViewCell.self, indexPath: indexPath) as! t
+        case .seller:
+            return  itemDetailsTableView.dequeueCell(tabelViewCell: SellerTableViewCell.self, indexPath: indexPath) as! t
+        case .recommended:
+            return  itemDetailsTableView.dequeueCell(tabelViewCell: RecommendedItemsTableViewCell.self, indexPath: indexPath) as! t
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource
 extension ItemDetailsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.allCases.count
+        return DetailsSections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Sections.allCases[section]{
+        switch DetailsSections.allCases[section]{
         case .buyer:
             return 3
         default:
@@ -60,20 +66,7 @@ extension ItemDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch Sections.allCases[indexPath.section] {
-        case .item:
-            let cell = tableView.dequeueCell(tabelViewCell: ItemDetailsTableViewCell.self, indexPath: indexPath)
-            return cell
-        case .buyer:
-            let cell = tableView.dequeueCell(tabelViewCell: BuyerTableViewCell.self, indexPath: indexPath)
-            return cell
-        case .seller:
-            let cell = tableView.dequeueCell(tabelViewCell: SellerTableViewCell.self, indexPath: indexPath)
-            return cell
-        case .recommended:
-            let cell = tableView.dequeueCell(tabelViewCell: RecommendedItemsTableViewCell.self, indexPath: indexPath)
-            return cell
-        }
+        getCell(indexPath: indexPath)
     }
 }
 

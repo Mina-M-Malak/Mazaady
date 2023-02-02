@@ -38,6 +38,8 @@
 		3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C0298BF8ED00384B99 /* DashedView.swift */; };
 		3167A4C4298BFBE500384B99 /* ItemVideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */; };
 		3167A4C5298BFBE500384B99 /* ItemVideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */; };
+		3167A4C8298C038B00384B99 /* DetailsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C7298C038B00384B99 /* DetailsSections.swift */; };
+		3167A4CB298C075F00384B99 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4CA298C075F00384B99 /* SearchViewModel.swift */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -106,6 +108,8 @@
 		3167A4C0298BF8ED00384B99 /* DashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
 		3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemVideosCollectionViewCell.xib; sourceTree = "<group>"; };
+		3167A4C7298C038B00384B99 /* DetailsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsSections.swift; sourceTree = "<group>"; };
+		3167A4CA298C075F00384B99 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 		31258505298A8DCA00C39F7B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				3167A4C9298C074C00384B99 /* ViewModel */,
 				3167A4B7298BF0CE00384B99 /* Enums */,
 				31258506298A8DE000C39F7B /* Model */,
 				312584FF298A8B8000C39F7B /* View */,
@@ -330,9 +335,26 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		3167A4C6298C037400384B99 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3167A4C7298C038B00384B99 /* DetailsSections.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		3167A4C9298C074C00384B99 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3167A4CA298C075F00384B99 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		31B29E23298BC45F0065B183 /* ItemDetails */ = {
 			isa = PBXGroup;
 			children = (
+				3167A4C6298C037400384B99 /* Enums */,
 				31B29E24298BC47A0065B183 /* View */,
 			);
 			path = ItemDetails;
@@ -656,10 +678,12 @@
 				3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */,
 				3167A4BC298BF45900384B99 /* PriceCollectionViewCell.swift in Sources */,
 				312584BD298A7F3100C39F7B /* AppDelegate.swift in Sources */,
+				3167A4CB298C075F00384B99 /* SearchViewModel.swift in Sources */,
 				312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */,
 				3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */,
 				3167A4C4298BFBE500384B99 /* ItemVideosCollectionViewCell.swift in Sources */,
 				31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */,
+				3167A4C8298C038B00384B99 /* DetailsSections.swift in Sources */,
 				3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */,
 				312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */,
 				312584F6298A87F100C39F7B /* APIRoute.swift in Sources */,

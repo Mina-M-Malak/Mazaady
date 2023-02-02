@@ -14,10 +14,6 @@ class PriceCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupUI()
-    }
-    
-    private func setupUI() {
         mainView.makeRoundedCornersWith(radius: 8.0)
     }
 }

@@ -14,10 +14,6 @@ class SellerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupUI()
-    }
-    
-    private func setupUI() {
         favoriteButton.makeRoundedCorners()
     }
 }
