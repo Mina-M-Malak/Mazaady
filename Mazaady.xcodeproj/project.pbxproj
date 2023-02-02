@@ -36,6 +36,8 @@
 		3167A4BC298BF45900384B99 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4BA298BF45900384B99 /* PriceCollectionViewCell.swift */; };
 		3167A4BD298BF45900384B99 /* PriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4BB298BF45900384B99 /* PriceCollectionViewCell.xib */; };
 		3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C0298BF8ED00384B99 /* DashedView.swift */; };
+		3167A4C4298BFBE500384B99 /* ItemVideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */; };
+		3167A4C5298BFBE500384B99 /* ItemVideosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -102,6 +104,8 @@
 		3167A4BA298BF45900384B99 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		3167A4BB298BF45900384B99 /* PriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		3167A4C0298BF8ED00384B99 /* DashedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
+		3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVideosCollectionViewCell.swift; sourceTree = "<group>"; };
+		3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemVideosCollectionViewCell.xib; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 			children = (
 				31B29E34298BCADC0065B183 /* ItemDetailsTableViewCell.swift */,
 				31B29E35298BCADC0065B183 /* ItemDetailsTableViewCell.xib */,
+				3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */,
+				3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */,
 				31B29E30298BCAC60065B183 /* BuyerTableViewCell.swift */,
 				31B29E31298BCAC60065B183 /* BuyerTableViewCell.xib */,
 				31B29E2C298BCA9D0065B183 /* SellerTableViewCell.swift */,
@@ -504,6 +510,7 @@
 				31B29E3B298BCAFB0065B183 /* RecommendedItemCollectionViewCell.xib in Resources */,
 				31B29E2F298BCA9D0065B183 /* SellerTableViewCell.xib in Resources */,
 				312584C4298A7F3100C39F7B /* Main.storyboard in Resources */,
+				3167A4C5298BFBE500384B99 /* ItemVideosCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +658,7 @@
 				312584BD298A7F3100C39F7B /* AppDelegate.swift in Sources */,
 				312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */,
 				3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */,
+				3167A4C4298BFBE500384B99 /* ItemVideosCollectionViewCell.swift in Sources */,
 				31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */,
 				3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */,
 				312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */,

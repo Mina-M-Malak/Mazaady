@@ -9,6 +9,7 @@ import UIKit
 
 class ItemDetailsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var itemVideosCollectionView: UICollectionView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var buyButton: UIButton!
@@ -18,6 +19,7 @@ class ItemDetailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         setupUI()
+        registerCells()
     }
     
     private func setupUI() {
@@ -27,10 +29,36 @@ class ItemDetailsTableViewCell: UITableViewCell {
         dateView.setShadow(shadowColoe: .gray, cornerRadius: 16.0, shadowRadius: 2.0, shadowOpacity: 0.5, width: 0, height: 1.0)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    private func registerCells() {
+        itemVideosCollectionView.delegate = self
+        itemVideosCollectionView.dataSource = self
+        itemVideosCollectionView.registerCell(collectionViewCell: ItemVideosCollectionViewCell.self)
     }
-    
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension ItemDetailsTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ItemVideosCollectionViewCell.self), for: indexPath) as! ItemVideosCollectionViewCell
+        return cell
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension ItemDetailsTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: (collectionView.frame.height))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
