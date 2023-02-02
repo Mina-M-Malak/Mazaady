@@ -47,6 +47,8 @@ extension ItemDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections.allCases[section]{
+        case .buyer:
+            return 3
         default:
             return 1
         }

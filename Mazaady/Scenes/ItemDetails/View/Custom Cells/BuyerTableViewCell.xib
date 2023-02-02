@@ -30,7 +30,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sellerIcon 1" translatesAutoresizingMaskIntoConstraints="NO" id="c6b-Gz-tw3">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sellericon 2" translatesAutoresizingMaskIntoConstraints="NO" id="c6b-Gz-tw3">
                         <rect key="frame" x="24" y="24" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="UBq-kO-dZI"/>
@@ -66,7 +66,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="sellerIcon 1" width="44" height="44"/>
+        <image name="sellericon 2" width="44" height="44"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

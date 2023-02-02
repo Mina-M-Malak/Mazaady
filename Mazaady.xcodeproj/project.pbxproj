@@ -30,6 +30,8 @@
 		3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850B298A91D800C39F7B /* UIView+Extensions.swift */; };
 		3125850E298A970600C39F7B /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850D298A970600C39F7B /* BaseTextField.swift */; };
 		313FB5DE298BE554009AA68C /* UICollectionView+Exetnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313FB5DD298BE554009AA68C /* UICollectionView+Exetnsions.swift */; };
+		3167A4B4298BEB6E00384B99 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4B3298BEB6E00384B99 /* GradientView.swift */; };
+		3167A4B6298BED4800384B99 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4B5298BED4800384B99 /* GradientButton.swift */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -90,6 +92,8 @@
 		3125850B298A91D800C39F7B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3125850D298A970600C39F7B /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		313FB5DD298BE554009AA68C /* UICollectionView+Exetnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Exetnsions.swift"; sourceTree = "<group>"; };
+		3167A4B3298BEB6E00384B99 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		3167A4B5298BED4800384B99 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				312584EC298A7F3B00C39F7B /* Network */,
 				312584F2298A877F00C39F7B /* Scenes */,
 				312584F1298A807700C39F7B /* Base */,
+				3167A4B2298BEB5800384B99 /* Custom View */,
 				312584EE298A801600C39F7B /* Extensions */,
 				312584EF298A802400C39F7B /* Assets */,
 				312584F0298A803D00C39F7B /* Storyboards */,
@@ -292,6 +297,15 @@
 				31258507298A8E0100C39F7B /* CategoryModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3167A4B2298BEB5800384B99 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				3167A4B3298BEB6E00384B99 /* GradientView.swift */,
+				3167A4B5298BED4800384B99 /* GradientButton.swift */,
+			);
+			path = "Custom View";
 			sourceTree = "<group>";
 		};
 		31B29E23298BC45F0065B183 /* ItemDetails */ = {
@@ -598,9 +612,11 @@
 			files = (
 				313FB5DE298BE554009AA68C /* UICollectionView+Exetnsions.swift in Sources */,
 				31B29E2E298BCA9D0065B183 /* SellerTableViewCell.swift in Sources */,
+				3167A4B4298BEB6E00384B99 /* GradientView.swift in Sources */,
 				31258502298A8BAC00C39F7B /* SearchInputTableViewCell.swift in Sources */,
 				31B29E36298BCADC0065B183 /* ItemDetailsTableViewCell.swift in Sources */,
 				312584FA298A87FF00C39F7B /* Endpoint.swift in Sources */,
+				3167A4B6298BED4800384B99 /* GradientButton.swift in Sources */,
 				31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */,
 				3125850E298A970600C39F7B /* BaseTextField.swift in Sources */,
 				312584F8298A87F800C39F7B /* Result.swift in Sources */,
