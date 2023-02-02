@@ -13,6 +13,7 @@ class SearchViewModel {
     var getCategories: ((_ categories: [Category]) -> ())?
     var getProperties: ((_ properties: [Property]) -> ())?
     var getChildOptions: ((_ properties: [Property]) -> ())?
+    var showError: ((_ errorMessage: String) -> ())?
     
     func fetchData() {
         showLoader?(true)
@@ -22,7 +23,7 @@ class SearchViewModel {
             case .success(let data):
                 self?.getCategories?(data.data.categories)
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showError?(error.localizedDescription)
             }
         }
     }
@@ -35,7 +36,7 @@ class SearchViewModel {
             case .success(let data):
                 self?.getProperties?(data.data)
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showError?(error.localizedDescription)
             }
         }
     }
@@ -48,7 +49,7 @@ class SearchViewModel {
             case .success(let data):
                 self?.getChildOptions?(data.data)
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showError?(error.localizedDescription)
             }
         }
     }

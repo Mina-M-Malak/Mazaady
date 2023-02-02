@@ -33,6 +33,7 @@ struct Property: Decodable{
     let options: [Option]
     var child: [Property]?
     var selectedOptionIndex: Int?
+    var otherValue: String?
 }
 
 struct Option: Decodable{

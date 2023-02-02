@@ -84,6 +84,10 @@ class SearchViewController: UIViewController {
             self?.properties[loadedSectionIndex].child = options
             self?.searchTableView.reloadSections(IndexSet(integer: loadedSectionIndex + 2), with: .automatic)
         }
+        
+        viewModel.showError = { [weak self] (errorMessage) in
+            self?.showAlert(title: "Error",message: errorMessage)
+        }
     }
     
     private func getResults() -> [ResultModel] {
@@ -129,56 +133,80 @@ class SearchViewController: UIViewController {
         }
         switch sections[indexPath.section] {
         case .category:
-            cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
-            cell.didSelectItem = { [weak self] (index) in
-                self?.selectedSubcategoryIndex = nil
-                self?.selectedCategoryIndex = index
-            }
+            setupCategoryCell(cell: cell)
         case .subcategory:
-            if let selectedCategoryIndex = selectedCategoryIndex {
-                cell.setSubcategory(subcategories: categories[selectedCategoryIndex].subcategories,selectedSubcategoryindex: selectedSubcategoryIndex)
-            }
-            cell.didSelectItem = { [weak self] (index) in
-                guard self?.selectedSubcategoryIndex != index else { return }
-                self?.selectedSubcategoryIndex = index
-            }
+            setupSubcategoryCell(cell: cell)
         case .option:
-            let section = indexPath.section - 2
-            if let option = (indexPath.row == 0) ? properties[section] : properties[section].child?[indexPath.row - 1] {
-                cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: option.selectedOptionIndex == -1)
-            }
-            
-            cell.didSelectItem = { [weak self] (index) in
-                if indexPath.row == 0 {
-                    
-                    if (self?.properties[section].options.count ?? 0) > index {
-                        self?.properties[section].selectedOptionIndex = index
-                        if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
-                            // get childs
-                            self?.loadedSectionIndex = section
-                            self?.viewModel.fetchChildOptions(propertyId: propertyId)
-                        }
-                    }
-                    else{
-                        self?.properties[section].selectedOptionIndex = -1
-                    }
-                    
-                    if !(self?.properties[section].child?.isEmpty ?? true) {
-                        self?.properties[section].child?.removeAll()
-                        self?.searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+            setupOptionCell(cell: cell,indexPath: indexPath)
+        }
+        return cell as! t
+    }
+    
+    private func setupCategoryCell(cell: SearchInputTableViewCell) {
+        cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
+        cell.didSelectItem = { [weak self] (index) in
+            self?.selectedSubcategoryIndex = nil
+            self?.selectedCategoryIndex = index
+        }
+    }
+    
+    private func setupSubcategoryCell(cell: SearchInputTableViewCell) {
+        if let selectedCategoryIndex = selectedCategoryIndex {
+            cell.setSubcategory(subcategories: categories[selectedCategoryIndex].subcategories,selectedSubcategoryindex: selectedSubcategoryIndex)
+        }
+        cell.didSelectItem = { [weak self] (index) in
+            guard self?.selectedSubcategoryIndex != index else { return }
+            self?.selectedSubcategoryIndex = index
+        }
+    }
+    
+    private func setupOptionCell(cell: SearchInputTableViewCell,indexPath: IndexPath) {
+        let section = indexPath.section - 2
+        if let option = (indexPath.row == 0) ? properties[section] : properties[section].child?[indexPath.row - 1] {
+            cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: option.selectedOptionIndex == -1)
+        }
+        
+        cell.didSelectItem = { [weak self] (index) in
+            if indexPath.row == 0 {
+                // Main Prop
+                if (self?.properties[section].options.count ?? 0) > index {
+                    self?.properties[section].selectedOptionIndex = index
+                    if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
+                        // get childs
+                        self?.loadedSectionIndex = section
+                        self?.viewModel.fetchChildOptions(propertyId: propertyId)
                     }
                 }
                 else{
-                    if (self?.properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
-                        self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
-                    }
-                    else{
-                        self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
-                    }
+                    // Other
+                    self?.properties[section].selectedOptionIndex = -1
+                }
+                
+                if !(self?.properties[section].child?.isEmpty ?? true) {
+                    self?.properties[section].child?.removeAll()
+                    self?.searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+                }
+            }
+            else{
+                // Child Prop
+                if (self?.properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
+                    self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
+                }
+                else{
+                    // Other
+                    self?.properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
                 }
             }
         }
-        return cell as! t
+        
+        cell.setText = { [weak self] (value) in
+            if indexPath.row == 0{
+                self?.properties[section].otherValue = value
+            }
+            else{
+                self?.properties[section].child?[indexPath.row - 1].otherValue = value
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

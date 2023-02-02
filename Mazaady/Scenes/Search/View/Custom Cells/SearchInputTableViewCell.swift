@@ -20,6 +20,7 @@ class SearchInputTableViewCell: UITableViewCell {
     private var section: SearchSections?
     var didSelectItem: ((_ index: Int)->())?
     var reloadCellHeight: (()->())?
+    var setText: ((_ value: String)->())?
     private var selectedIndex: Int?
     
     override func awakeFromNib() {
@@ -35,6 +36,7 @@ class SearchInputTableViewCell: UITableViewCell {
         
         searchInputTextField.inputView = dataPicker
         searchInputTextField.delegate = self
+        otherTextField.delegate = self
         
         otherTextField.placeholder = "Spacify here"
     }
@@ -174,7 +176,10 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let selectedIndex = selectedIndex else { return }
+        guard let selectedIndex = selectedIndex else {
+            setText?(textField.text ?? "")
+            return
+        }
         didSelectItem?(selectedIndex)
         if section == .option , options?[selectedIndex].id == 0 , otherTextField.isHidden{
             otherTextField.isHidden = false
