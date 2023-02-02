@@ -12,6 +12,7 @@ class SearchInputTableViewCell: UITableViewCell {
     @IBOutlet weak var searchInputTextField: UITextField!
     @IBOutlet weak var otherTextField: UITextField!
     @IBOutlet weak var arrowImageView: UIImageView!
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     private var categories: [Category]?
     private var subcategories: [Subcategory]?
@@ -39,12 +40,14 @@ class SearchInputTableViewCell: UITableViewCell {
         otherTextField.delegate = self
         
         otherTextField.placeholder = "Spacify here"
+        placeholderLabel.text = "Spacify here"
     }
     
     func setData(section: SearchSections) {
         setupUI()
         self.section = section
         searchInputTextField.placeholder =  section.placeholder
+        placeholderLabel.text = section.placeholder
     }
     
     func setCategory(categories: [Category],selectedCategoryindex: Int? = nil) {
@@ -85,6 +88,7 @@ class SearchInputTableViewCell: UITableViewCell {
         categories?.removeAll()
         subcategories?.removeAll()
         searchInputTextField.placeholder =  property.name
+        placeholderLabel.text = property.name
         options = property.options
         otherTextField.isHidden = !showOther
         arrowImageView.isHidden = property.options.isEmpty
@@ -181,6 +185,7 @@ extension SearchInputTableViewCell: UIPickerViewDelegate {
 //MARK: - UITextFieldDelegate
 extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        placeholderLabel.isHidden = false
         guard textField == searchInputTextField , (textField.text?.isEmpty ?? true) , let defaultValue = categories?.first?.name ?? subcategories?.first?.name ?? options?.first?.name else {
             textField.text = nil
             return
@@ -190,6 +195,7 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        placeholderLabel.isHidden = (textField.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? true)
         guard let selectedIndex = selectedIndex , textField == searchInputTextField else {
             setText?(textField.text ?? "")
             return
