@@ -27,10 +27,15 @@ class SearchViewController: UIViewController {
     }
     
     @IBOutlet weak var searchTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     
     private var selectedCategoryIndex: Int?{
         didSet{
-            if let subcategorySectionIndex = sections.firstIndex(where: {$0 == .subcategory}) {
+            if sections.contains(.option){
+                sections.removeAll(where: {$0 == .option})
+                searchTableView.reloadData()
+            }
+            else if let subcategorySectionIndex = sections.firstIndex(where: {$0 == .subcategory}) {
                 searchTableView.reloadRows(at: [IndexPath(row: 0, section: subcategorySectionIndex)], with: .automatic)
             }
         }
@@ -48,7 +53,6 @@ class SearchViewController: UIViewController {
         }
     }
     private var properties: [Property] = []
-    
     private var sections: [Sections] = [.category,.subcategory]
     
     override func viewDidLoad() {
@@ -60,11 +64,17 @@ class SearchViewController: UIViewController {
     
     private func setupUI() {
         title = "Search"
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresher), for: .valueChanged)
+        
+        searchTableView.refreshControl = refreshControl
         searchTableView.registerCell(tabelViewCell: SearchInputTableViewCell.self)
     }
     
     private func fetchData() {
+        self.handleRefreshControl(true)
         APIRoute.shared.fetch(with: .getAllCars, model: APIResponse<CategoriesData>.self) { [weak self] (response) in
+            self?.handleRefreshControl(false)
             switch response{
             case .success(let data):
                 self?.categories = data.data.categories
@@ -76,8 +86,11 @@ class SearchViewController: UIViewController {
     
     private func fetchProperties() {
         guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
+        sections.removeAll(where: {$0 == .option})
+        self.handleRefreshControl(true)
         APIRoute.shared.fetch(with: .getProperties(subcategoryId: categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id), model: APIResponse<[Property]>.self) { [weak self] (response) in
             guard let strongSelf = self else { return }
+            strongSelf.handleRefreshControl(false)
             switch response{
             case .success(let data):
                 strongSelf.properties = data.data
@@ -89,19 +102,35 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func fetchChildOptions(indexPath: IndexPath) {
-        guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
-        APIRoute.shared.fetch(with: .getProperties(subcategoryId: categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id), model: APIResponse<[Property]>.self) { [weak self] (response) in
+    private func fetchChildOptions(propertyId: Int,propertyIndex: Int) {
+        self.handleRefreshControl(true)
+        APIRoute.shared.fetch(with: .getChildOptions(optionId: propertyId), model: APIResponse<[Property]>.self) { [weak self] (response) in
             guard let strongSelf = self else { return }
+            strongSelf.handleRefreshControl(false)
             switch response{
             case .success(let data):
-                strongSelf.properties = data.data
-                strongSelf.sections.append(contentsOf: Sections.AllCases(repeating: .option, count: strongSelf.properties.count))
-                strongSelf.searchTableView.reloadData()
+                strongSelf.properties[propertyIndex - 2].child = data.data
+                strongSelf.searchTableView.reloadSections(IndexSet(integer: propertyIndex), with: .automatic)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @objc private func handleRefreshControl(_ isRefreshing:Bool) {
+        if isRefreshing {
+            refreshControl.beginRefreshing()
+            view.isUserInteractionEnabled = false
+        } else {
+            if refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+                view.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    @objc private func handleRefresher() {
+        refreshControl.endRefreshing()
     }
     
     func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
@@ -115,31 +144,45 @@ class SearchViewController: UIViewController {
         case .category:
             cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
             cell.didSelectItem = { [weak self] (index) in
-                self?.selectedCategoryIndex = index
                 self?.selectedSubcategoryIndex = nil
+                self?.selectedCategoryIndex = index
             }
         case .subcategory:
             if let selectedCategoryIndex = selectedCategoryIndex {
                 cell.setSubcategory(subcategories: categories[selectedCategoryIndex].subcategories,selectedSubcategoryindex: selectedSubcategoryIndex)
             }
             cell.didSelectItem = { [weak self] (index) in
+                guard self?.selectedSubcategoryIndex != index else { return }
                 self?.selectedSubcategoryIndex = index
             }
         case .option:
-            cell.setOption(property: properties[indexPath.section - 2],selectedPropertyName: properties[indexPath.section - 2].selectedOption?.name , showOther: properties[indexPath.section - 2].selectedOption?.id == 0)
+            if let option = (indexPath.row == 0) ? properties[indexPath.section - 2] : properties[indexPath.section - 2].child?[indexPath.row - 1] {
+                cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: option.selectedOptionIndex == -1)
+            }
+            
             cell.didSelectItem = { [weak self] (index) in
-                if (self?.properties[indexPath.section - 2].options.count ?? 0) > index {
-                    self?.properties[indexPath.section - 2].selectedOption = self?.properties[indexPath.section - 2].options[index]
-                    if (self?.properties[indexPath.section - 2].options[index].child ?? false){
-                        // get childs
+                if indexPath.row == 0 {
+                    if (self?.properties[indexPath.section - 2].options.count ?? 0) > index {
+                        self?.properties[indexPath.section - 2].selectedOptionIndex = index
+                        if (self?.properties[indexPath.section - 2].options[index].child ?? false) , let propertyId = self?.properties[indexPath.section - 2].options[index].id {
+                            // get childs
+                            self?.fetchChildOptions(propertyId: propertyId, propertyIndex: indexPath.section)
+                        }
+                    }
+                    else{
+                        self?.properties[indexPath.section - 2].selectedOptionIndex = -1
                     }
                 }
                 else{
-                    self?.properties[indexPath.section - 2].selectedOption = Option(id: 0, name: "Other", slug: "Other", child: false)
+                    if (self?.properties[indexPath.section - 2].child?[indexPath.row - 1].options.count ?? 0) > index {
+                        self?.properties[indexPath.section - 2].child?[indexPath.row - 1].selectedOptionIndex = index
+                    }
+                    else{
+                        self?.properties[indexPath.section - 2].child?[indexPath.row - 1].selectedOptionIndex = -1
+                    }
                 }
             }
         }
-        
         return cell as! t
     }
 }
@@ -155,7 +198,7 @@ extension SearchViewController: UITableViewDataSource {
         case .category , .subcategory:
             return 1
         case .option:
-            return 1
+            return (properties[section - 2].child?.count ?? 0) + 1
         }
     }
     

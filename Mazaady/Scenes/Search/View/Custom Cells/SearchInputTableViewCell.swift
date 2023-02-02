@@ -14,11 +14,7 @@ class SearchInputTableViewCell: UITableViewCell {
     @IBOutlet weak var arrowImageView: UIImageView!
     
     private var categories: [Category]?
-    private var subcategories: [Subcategory]?{
-        didSet{
-            resetTextField()
-        }
-    }
+    private var subcategories: [Subcategory]?
     private var options: [Option]?
     private let dataPicker = UIPickerView()
     private var section: SearchViewController.Sections?
@@ -29,7 +25,6 @@ class SearchInputTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupUI()
     }
     
     private func setupUI() {
@@ -45,12 +40,8 @@ class SearchInputTableViewCell: UITableViewCell {
         otherTextField.placeholder = "Spacify here"
     }
     
-    private func resetTextField() {
-        searchInputTextField.text = nil
-        dataPicker.selectRow(0, inComponent: 0, animated: false)
-    }
-    
     func setData(section: SearchViewController.Sections) {
+        setupUI()
         self.section = section
         searchInputTextField.placeholder =  section.placeholder
     }
@@ -58,32 +49,54 @@ class SearchInputTableViewCell: UITableViewCell {
     func setCategory(categories: [Category],selectedCategoryindex: Int? = nil) {
         self.categories = categories
         otherTextField.isHidden = true
+        arrowImageView.isHidden = false
         if let selectedCategoryindex = selectedCategoryindex{
             selectedIndex = selectedCategoryindex
             searchInputTextField.text = categories[selectedCategoryindex].name
+            dataPicker.selectRow(selectedCategoryindex, inComponent: 0, animated: false)
+        }
+        else{
+            searchInputTextField.text = nil
+            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
     }
     
     func setSubcategory(subcategories: [Subcategory],selectedSubcategoryindex: Int? = nil) {
         self.subcategories = subcategories
         otherTextField.isHidden = true
+        arrowImageView.isHidden = false
         if let selectedSubcategoryindex = selectedSubcategoryindex{
             selectedIndex = selectedSubcategoryindex
             searchInputTextField.text = subcategories[selectedSubcategoryindex].name
+            dataPicker.selectRow(selectedSubcategoryindex, inComponent: 0, animated: false)
+        }
+        else{
+            searchInputTextField.text = nil
+            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
     }
     
-    func setOption(property: Property,selectedPropertyName: String? = nil,showOther: Bool) {
+    func setOption(property: Property,selectedOptionIndex: Int? = nil,showOther: Bool) {
         searchInputTextField.placeholder =  property.name
-        searchInputTextField.text = selectedPropertyName
         options = property.options
         otherTextField.isHidden = !showOther
+        arrowImageView.isHidden = property.options.isEmpty
+        searchInputTextField.inputView = dataPicker
         if property.options.isEmpty {
             searchInputTextField.inputView = nil
-            arrowImageView.isHidden = true
         }
         else if property.options.last?.id != 0 {
             options?.append(Option(id: 0, name: "Other", slug: "Other", child: false))
+        }
+        
+        if let selectedOptionIndex = selectedOptionIndex {
+            searchInputTextField.text = property.options[selectedOptionIndex].name
+            selectedIndex = selectedOptionIndex
+            dataPicker.selectRow(selectedOptionIndex, inComponent: 0, animated: false)
+        }
+        else{
+            searchInputTextField.text = nil
+            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
     }
     

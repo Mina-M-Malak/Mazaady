@@ -10,6 +10,7 @@ import Foundation
 enum Mazaady {
     case getAllCars
     case getProperties(subcategoryId: Int)
+    case getChildOptions(optionId: Int)
 }
 
 extension Mazaady: Endpoint {
@@ -31,6 +32,8 @@ extension Mazaady: Endpoint {
             return "get_all_cats"
         case .getProperties:
             return "properties"
+        case .getChildOptions(let optionId):
+            return "get-options-child/\(optionId)"
         }
     }
     

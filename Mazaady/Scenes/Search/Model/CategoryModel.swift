@@ -31,7 +31,8 @@ struct Property: Decodable{
     let id: Int
     let name: String
     let options: [Option]
-    var selectedOption: Option?
+    var child: [Property]?
+    var selectedOptionIndex: Int?
 }
 
 struct Option: Decodable{
