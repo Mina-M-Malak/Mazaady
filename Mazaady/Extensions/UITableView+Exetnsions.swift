@@ -12,6 +12,10 @@ extension UITableView {
         self.register(UINib(nibName: String(describing: tabelViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: tabelViewCell.self))
     }
     
+    func registerHeader<header: UITableViewHeaderFooterView>(header: header.Type){
+        self.register(UINib(nibName:  String(describing: BuyerSectionHeaderView.self), bundle: nil), forHeaderFooterViewReuseIdentifier: String(describing: BuyerSectionHeaderView.self))
+    }
+    
     func dequeueCell<cell: UITableViewCell>(tabelViewCell: cell.Type, indexPath: IndexPath) -> cell {
         return dequeueReusableCell(withIdentifier: String(describing: tabelViewCell.self), for: indexPath) as! cell
     }

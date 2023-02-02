@@ -45,6 +45,8 @@
 		3167A4D4298C155900384B99 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4D2298C155900384B99 /* ResultTableViewCell.xib */; };
 		3167A4D7298C177A00384B99 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4D6298C177A00384B99 /* ResultModel.swift */; };
 		3167A4D9298C235B00384B99 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4D8298C235B00384B99 /* UIViewController+Extensions.swift */; };
+		3167A4DB298C2E5100384B99 /* BuyerSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4DA298C2E5100384B99 /* BuyerSectionHeaderView.swift */; };
+		3167A4DD298C2E7100384B99 /* BuyerSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4DC298C2E7100384B99 /* BuyerSectionHeaderView.xib */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -120,6 +122,8 @@
 		3167A4D2298C155900384B99 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		3167A4D6298C177A00384B99 /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		3167A4D8298C235B00384B99 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		3167A4DA298C2E5100384B99 /* BuyerSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerSectionHeaderView.swift; sourceTree = "<group>"; };
+		3167A4DC298C2E7100384B99 /* BuyerSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyerSectionHeaderView.xib; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 				31B29E35298BCADC0065B183 /* ItemDetailsTableViewCell.xib */,
 				3167A4C2298BFBE500384B99 /* ItemVideosCollectionViewCell.swift */,
 				3167A4C3298BFBE500384B99 /* ItemVideosCollectionViewCell.xib */,
+				3167A4DA298C2E5100384B99 /* BuyerSectionHeaderView.swift */,
+				3167A4DC298C2E7100384B99 /* BuyerSectionHeaderView.xib */,
 				31B29E30298BCAC60065B183 /* BuyerTableViewCell.swift */,
 				31B29E31298BCAC60065B183 /* BuyerTableViewCell.xib */,
 				31B29E2C298BCA9D0065B183 /* SellerTableViewCell.swift */,
@@ -581,6 +587,7 @@
 				31B29E2F298BCA9D0065B183 /* SellerTableViewCell.xib in Resources */,
 				312584C4298A7F3100C39F7B /* Main.storyboard in Resources */,
 				3167A4C5298BFBE500384B99 /* ItemVideosCollectionViewCell.xib in Resources */,
+				3167A4DD298C2E7100384B99 /* BuyerSectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +748,7 @@
 				312584F6298A87F100C39F7B /* APIRoute.swift in Sources */,
 				312584FC298A880E00C39F7B /* Mazaady.swift in Sources */,
 				31B29E3A298BCAFB0065B183 /* RecommendedItemCollectionViewCell.swift in Sources */,
+				3167A4DB298C2E5100384B99 /* BuyerSectionHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

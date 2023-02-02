@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" id="iN0-l3-epB" customClass="BuyerSectionHeaderView" customModule="Mazaady" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="266"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyerIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wdH-JZ-KPK">
+                    <rect key="frame" x="369" y="16" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="6u5-K1-BGN"/>
+                        <constraint firstAttribute="width" secondItem="wdH-JZ-KPK" secondAttribute="height" multiplier="1:1" id="jVZ-bE-Tey"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المزايدون" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onK-da-6PD">
+                    <rect key="frame" x="306" y="18" width="59" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="0Ng-t6-Wgb">
+                    <rect key="frame" x="16" y="21" width="70.666666666666686" height="14.333333333333336"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عرض الكل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNA-Gk-Cmb">
+                            <rect key="frame" x="19.999999999999996" y="0.0" width="50.666666666666657" height="14.333333333333334"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                            <color key="textColor" red="0.82352948189999997" green="0.02352941222" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="S76-RD-mdA">
+                            <rect key="frame" x="0.0" y="-1" width="20" height="16.333333333333332"/>
+                            <color key="tintColor" red="0.82352948189999997" green="0.02352941222" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="XGz-Oj-ndJ"/>
+                                <constraint firstAttribute="width" secondItem="S76-RD-mdA" secondAttribute="height" multiplier="1:1" id="xCO-vL-Bda"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="wNA-Gk-Cmb" firstAttribute="leading" secondItem="0Ng-t6-Wgb" secondAttribute="leading" id="1fE-ph-ClH"/>
+                        <constraint firstAttribute="trailing" secondItem="S76-RD-mdA" secondAttribute="trailing" id="3bP-8h-4jB"/>
+                        <constraint firstItem="S76-RD-mdA" firstAttribute="centerY" secondItem="wNA-Gk-Cmb" secondAttribute="centerY" id="6wb-8Y-qfE"/>
+                        <constraint firstItem="wNA-Gk-Cmb" firstAttribute="top" secondItem="0Ng-t6-Wgb" secondAttribute="top" id="fi4-pm-TyS"/>
+                        <constraint firstAttribute="bottom" secondItem="wNA-Gk-Cmb" secondAttribute="bottom" id="fzF-KE-xeD"/>
+                        <constraint firstItem="S76-RD-mdA" firstAttribute="leading" secondItem="wNA-Gk-Cmb" secondAttribute="trailing" id="qoO-Vd-ttW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="0Ng-t6-Wgb" secondAttribute="trailing" constant="16" id="5O8-Sj-ppa"/>
+                <constraint firstItem="wdH-JZ-KPK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="M6J-M7-43v"/>
+                <constraint firstItem="onK-da-6PD" firstAttribute="centerY" secondItem="wdH-JZ-KPK" secondAttribute="centerY" id="Oti-8d-1FU"/>
+                <constraint firstItem="wdH-JZ-KPK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="PNn-DV-Rnh"/>
+                <constraint firstItem="onK-da-6PD" firstAttribute="leading" secondItem="wdH-JZ-KPK" secondAttribute="trailing" constant="4" id="le7-Xm-QeP"/>
+                <constraint firstItem="0Ng-t6-Wgb" firstAttribute="centerY" secondItem="onK-da-6PD" secondAttribute="centerY" id="rVd-6c-xkB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="148.85496183206106" y="-207.74647887323945"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buyerIcon" width="28" height="23.333333969116211"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
