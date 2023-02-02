@@ -86,6 +86,24 @@ class SearchViewController: UIViewController {
         }
     }
     
+    private func getResults() -> [ResultModel] {
+        guard selectedCategoryIndex != nil else { return []}
+        var results: [ResultModel] = []
+        if let selectedSubcategoryIndex = selectedSubcategoryIndex {
+            results = [ResultModel(key: "Category", value: categories[selectedCategoryIndex!].name),
+                                          ResultModel(key: "Subcategory", value: categories[selectedCategoryIndex!].subcategories[selectedSubcategoryIndex].name)]
+        }
+        else if let selectedCategoryIndex = selectedCategoryIndex {
+            results = [ResultModel(key: "Category", value: categories[selectedCategoryIndex].name)]
+        }
+        properties.forEach { (property) in
+            if let selectedOptionIndex = property.selectedOptionIndex {
+                results.append(ResultModel(key: property.name, value: property.options[selectedOptionIndex].name))
+            }
+        }
+        return results
+    }
+    
     @objc private func handleRefreshControl(_ isRefreshing:Bool) {
         if isRefreshing {
             refreshControl.beginRefreshing()
@@ -132,6 +150,7 @@ class SearchViewController: UIViewController {
             
             cell.didSelectItem = { [weak self] (index) in
                 if indexPath.row == 0 {
+                    
                     if (self?.properties[section].options.count ?? 0) > index {
                         self?.properties[section].selectedOptionIndex = index
                         if (self?.properties[section].options[index].child ?? false) , let propertyId = self?.properties[section].options[index].id {
@@ -142,6 +161,11 @@ class SearchViewController: UIViewController {
                     }
                     else{
                         self?.properties[section].selectedOptionIndex = -1
+                    }
+                    
+                    if !(self?.properties[section].child?.isEmpty ?? true) {
+                        self?.properties[section].child?.removeAll()
+                        self?.searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
                     }
                 }
                 else{
@@ -155,6 +179,12 @@ class SearchViewController: UIViewController {
             }
         }
         return cell as! t
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ResultViewController {
+            vc.results = getResults()
+        }
     }
 }
 

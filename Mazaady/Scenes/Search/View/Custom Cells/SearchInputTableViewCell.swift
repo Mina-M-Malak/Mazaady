@@ -47,6 +47,8 @@ class SearchInputTableViewCell: UITableViewCell {
     
     func setCategory(categories: [Category],selectedCategoryindex: Int? = nil) {
         self.categories = categories
+        subcategories?.removeAll()
+        options?.removeAll()
         otherTextField.isHidden = true
         arrowImageView.isHidden = false
         if let selectedCategoryindex = selectedCategoryindex {
@@ -62,6 +64,8 @@ class SearchInputTableViewCell: UITableViewCell {
     
     func setSubcategory(subcategories: [Subcategory],selectedSubcategoryindex: Int? = nil) {
         self.subcategories = subcategories
+        categories?.removeAll()
+        options?.removeAll()
         otherTextField.isHidden = true
         arrowImageView.isHidden = false
         if let selectedSubcategoryindex = selectedSubcategoryindex{
@@ -76,6 +80,8 @@ class SearchInputTableViewCell: UITableViewCell {
     }
     
     func setOption(property: Property,selectedOptionIndex: Int? = nil,showOther: Bool) {
+        categories?.removeAll()
+        subcategories?.removeAll()
         searchInputTextField.placeholder =  property.name
         options = property.options
         otherTextField.isHidden = !showOther

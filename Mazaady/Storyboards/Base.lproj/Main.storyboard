@@ -41,7 +41,11 @@
                                 <segue destination="Pae-b3-fJ5" kind="show" id="QyQ-Au-ram"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="bDV-ck-i2s"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="bDV-ck-i2s">
+                            <connections>
+                                <segue destination="nsU-0L-Vwq" kind="show" id="0aC-6U-IhA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchTableView" destination="3aG-7Z-44K" id="mSe-8Q-G8e"/>
@@ -155,7 +159,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOg-k5-XSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.885496183206" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="334" y="838"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="mKZ-MN-CJR">
+            <objects>
+                <viewController id="nsU-0L-Vwq" customClass="ResultViewController" customModule="Mazaady" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F8E-lZ-9jl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f98-Rr-vid">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nsU-0L-Vwq" id="S5o-PL-eR4"/>
+                                    <outlet property="delegate" destination="nsU-0L-Vwq" id="eAM-3c-kzv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VRy-6m-PHH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f98-Rr-vid" firstAttribute="leading" secondItem="VRy-6m-PHH" secondAttribute="leading" id="QY8-zX-kPi"/>
+                            <constraint firstItem="f98-Rr-vid" firstAttribute="top" secondItem="VRy-6m-PHH" secondAttribute="top" id="TCx-A1-6Vb"/>
+                            <constraint firstAttribute="bottom" secondItem="f98-Rr-vid" secondAttribute="bottom" id="a0m-91-XX4"/>
+                            <constraint firstItem="VRy-6m-PHH" firstAttribute="trailing" secondItem="f98-Rr-vid" secondAttribute="trailing" id="plq-xF-YA6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="upV-Vh-Ppa"/>
+                    <connections>
+                        <outlet property="resultTableView" destination="f98-Rr-vid" id="6xL-uE-4bA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9PX-Pa-5ff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1536.6412213740457" y="836.61971830985919"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qHg-aI-sr8">
