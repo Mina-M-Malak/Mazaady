@@ -97,9 +97,16 @@ class SearchInputTableViewCell: UITableViewCell {
         }
         
         if let selectedOptionIndex = selectedOptionIndex {
-            searchInputTextField.text = property.options[selectedOptionIndex].name
-            selectedIndex = selectedOptionIndex
-            dataPicker.selectRow(selectedOptionIndex, inComponent: 0, animated: false)
+            if selectedOptionIndex != -1 {
+                searchInputTextField.text = property.options[selectedOptionIndex].name
+                selectedIndex = selectedOptionIndex
+                dataPicker.selectRow(selectedOptionIndex, inComponent: 0, animated: false)
+            }
+            else {
+                searchInputTextField.text = options?.last?.name
+                selectedIndex = property.options.count
+                dataPicker.selectRow(property.options.count, inComponent: 0, animated: false)
+            }
         }
         else{
             searchInputTextField.text = nil
@@ -170,7 +177,10 @@ extension SearchInputTableViewCell: UIPickerViewDelegate {
 //MARK: - UITextFieldDelegate
 extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        guard (textField.text?.isEmpty ?? true) , let defaultValue = categories?.first?.name ?? subcategories?.first?.name ?? options?.first?.name else { return }
+        guard textField == searchInputTextField , (textField.text?.isEmpty ?? true) , let defaultValue = categories?.first?.name ?? subcategories?.first?.name ?? options?.first?.name else {
+            textField.text = nil
+            return
+        }
         textField.text = defaultValue
         selectedIndex = 0
     }
@@ -183,6 +193,7 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
         didSelectItem?(selectedIndex)
         if section == .option , options?[selectedIndex].id == 0 , otherTextField.isHidden{
             otherTextField.isHidden = false
+            otherTextField.text = nil
             reloadCellHeight?()
         }
         else if !otherTextField.isHidden {
