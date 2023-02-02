@@ -89,6 +89,7 @@ class SearchInputTableViewCell: UITableViewCell {
         otherTextField.isHidden = !showOther
         arrowImageView.isHidden = property.options.isEmpty
         searchInputTextField.inputView = dataPicker
+        
         if property.options.isEmpty {
             searchInputTextField.inputView = nil
         }
@@ -108,9 +109,12 @@ class SearchInputTableViewCell: UITableViewCell {
                 dataPicker.selectRow(property.options.count, inComponent: 0, animated: false)
             }
         }
-        else{
+        else if (property.otherValue?.isEmpty ?? true){
             searchInputTextField.text = nil
             dataPicker.selectRow(0, inComponent: 0, animated: false)
+        }
+        else{
+            searchInputTextField.text = property.otherValue
         }
     }
     
@@ -186,7 +190,7 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let selectedIndex = selectedIndex else {
+        guard let selectedIndex = selectedIndex , textField == searchInputTextField else {
             setText?(textField.text ?? "")
             return
         }
