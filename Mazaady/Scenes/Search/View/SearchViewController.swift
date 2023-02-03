@@ -167,7 +167,8 @@ class SearchViewController: UIViewController {
     private func setupOptionCell(cell: SearchInputTableViewCell,indexPath: IndexPath) {
         let section = indexPath.section - 2
         if let option = (indexPath.row == 0) ? properties[section] : properties[section].child?[indexPath.row - 1] {
-            cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: option.selectedOptionIndex == -1)
+            let showOther: Bool = (option.selectedOptionIndex == -1 && !option.options.isEmpty )
+            cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: showOther)
         }
         
         cell.didSelectItem = { [weak self] (index) in

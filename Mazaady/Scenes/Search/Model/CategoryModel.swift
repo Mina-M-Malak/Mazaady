@@ -30,7 +30,7 @@ struct Subcategory: Decodable{
 struct Property: Decodable{
     let id: Int
     let name: String
-    let options: [Option]
+    var options: [Option]
     var child: [Property]?
     var selectedOptionIndex: Int?
     var otherValue: String?
