@@ -17,6 +17,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         
         registerCells()
+        resultTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
     
     private func registerCells() {

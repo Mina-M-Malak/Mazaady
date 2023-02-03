@@ -25,7 +25,6 @@
 		312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312584FD298A8B7B00C39F7B /* SearchViewController.swift */; };
 		31258502298A8BAC00C39F7B /* SearchInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258500298A8BAC00C39F7B /* SearchInputTableViewCell.swift */; };
 		31258503298A8BAC00C39F7B /* SearchInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31258501298A8BAC00C39F7B /* SearchInputTableViewCell.xib */; };
-		31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258507298A8E0100C39F7B /* CategoryModel.swift */; };
 		3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31258509298A8FC300C39F7B /* UITableView+Exetnsions.swift */; };
 		3125850C298A91D800C39F7B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850B298A91D800C39F7B /* UIView+Extensions.swift */; };
 		3125850E298A970600C39F7B /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3125850D298A970600C39F7B /* BaseTextField.swift */; };
@@ -47,6 +46,7 @@
 		3167A4D9298C235B00384B99 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4D8298C235B00384B99 /* UIViewController+Extensions.swift */; };
 		3167A4DB298C2E5100384B99 /* BuyerSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4DA298C2E5100384B99 /* BuyerSectionHeaderView.swift */; };
 		3167A4DD298C2E7100384B99 /* BuyerSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3167A4DC298C2E7100384B99 /* BuyerSectionHeaderView.xib */; };
+		3167A4DF298C97A300384B99 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167A4DE298C97A300384B99 /* SearchModel.swift */; };
 		31B29E26298BC48D0065B183 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */; };
 		31B29E2A298BC8B40065B183 /* RecommendedItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */; };
 		31B29E2B298BC8B40065B183 /* RecommendedItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */; };
@@ -102,7 +102,6 @@
 		312584FD298A8B7B00C39F7B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		31258500298A8BAC00C39F7B /* SearchInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputTableViewCell.swift; sourceTree = "<group>"; };
 		31258501298A8BAC00C39F7B /* SearchInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchInputTableViewCell.xib; sourceTree = "<group>"; };
-		31258507298A8E0100C39F7B /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		31258509298A8FC300C39F7B /* UITableView+Exetnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Exetnsions.swift"; sourceTree = "<group>"; };
 		3125850B298A91D800C39F7B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3125850D298A970600C39F7B /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		3167A4D8298C235B00384B99 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		3167A4DA298C2E5100384B99 /* BuyerSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerSectionHeaderView.swift; sourceTree = "<group>"; };
 		3167A4DC298C2E7100384B99 /* BuyerSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyerSectionHeaderView.xib; sourceTree = "<group>"; };
+		3167A4DE298C97A300384B99 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		31B29E25298BC48D0065B183 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		31B29E28298BC8B40065B183 /* RecommendedItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedItemsTableViewCell.swift; sourceTree = "<group>"; };
 		31B29E29298BC8B40065B183 /* RecommendedItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendedItemsTableViewCell.xib; sourceTree = "<group>"; };
@@ -328,7 +328,7 @@
 		31258506298A8DE000C39F7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				31258507298A8E0100C39F7B /* CategoryModel.swift */,
+				3167A4DE298C97A300384B99 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -739,10 +739,10 @@
 				312584FE298A8B7B00C39F7B /* SearchViewController.swift in Sources */,
 				3125850A298A8FC300C39F7B /* UITableView+Exetnsions.swift in Sources */,
 				3167A4C4298BFBE500384B99 /* ItemVideosCollectionViewCell.swift in Sources */,
-				31258508298A8E0100C39F7B /* CategoryModel.swift in Sources */,
 				3167A4C8298C038B00384B99 /* DetailsSections.swift in Sources */,
 				3167A4C1298BF8ED00384B99 /* DashedView.swift in Sources */,
 				312584BF298A7F3100C39F7B /* SceneDelegate.swift in Sources */,
+				3167A4DF298C97A300384B99 /* SearchModel.swift in Sources */,
 				3167A4D9298C235B00384B99 /* UIViewController+Extensions.swift in Sources */,
 				3167A4D7298C177A00384B99 /* ResultModel.swift in Sources */,
 				312584F6298A87F100C39F7B /* APIRoute.swift in Sources */,

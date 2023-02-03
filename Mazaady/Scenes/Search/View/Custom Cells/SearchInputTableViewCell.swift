@@ -104,7 +104,7 @@ class SearchInputTableViewCell: UITableViewCell {
             searchInputTextField.inputView = nil
         }
         else if property.options.last?.id != 0 {
-            self.property!.options.append(Option(id: 0, name: "Other", slug: "Other", child: false))
+            self.property!.options.append(Option(id: 0, name: "Other", child: false))
         }
         
         if let selectedOptionIndex = selectedOptionIndex {

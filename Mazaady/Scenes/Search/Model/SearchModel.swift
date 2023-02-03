@@ -1,8 +1,8 @@
 //
-//  CategoryModel.swift
+//  SearchModel.swift
 //  Mazaady
 //
-//  Created by Mina Malak on 01/02/2023.
+//  Created by Mina Malak on 03/02/2023.
 //
 
 import Foundation
@@ -39,6 +39,5 @@ struct Property: Decodable{
 struct Option: Decodable{
     let id: Int
     let name: String
-    let slug: String
     let child: Bool
 }
