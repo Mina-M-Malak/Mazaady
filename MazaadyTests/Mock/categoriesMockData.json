@@ -1,0 +1,71 @@
+{
+    "id": 1,
+    "name": "سيارات ودرجات ومستلزماتها",
+    "description": null,
+    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/o0XfOKPJ8qbPv3eTGohQ8lXafJ5nvmOJSQYIFNHW.png",
+    "slug": "cars-motorcycles-accessories",
+    "children": [
+        {
+            "id": 13,
+            "name": "سيارات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/kEE9v9xOHnZrprP24h76ZmEL6iuXPOKetgrkyoY6.png",
+            "slug": "cars",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 1
+        },
+        {
+            "id": 14,
+            "name": "قطع غيار السيارات والإكسسوارات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/2LpHboKSmYu9YE55pJWuRpEZkQ8qmeXzVRU6LnZ1.png",
+            "slug": "auto-parts-accessories",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 15,
+            "name": "دراجات نارية ودبابات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/dsMm47dXgwUnnq7LnbgXwVTuNSqAXBYpHUdnCNfI.png",
+            "slug": "motorcycles",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 1
+        },
+        {
+            "id": 16,
+            "name": "دراجات هوائية",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/xHMFRm6nzB7lKppTMFMT6iKrQdFycual7Iaxge3f.png",
+            "slug": "bicycles",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 17,
+            "name": "مستلزمات الدراجات النارية والهوائية",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/5fROaAcgSQQS5oEjBTsFn7L4HfKtOtaP1Tsb7jpu.png",
+            "slug": "motorcycles-bicycles-accessories",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 100,
+            "name": "لوحات السيارات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/pJ392yoZzlpidyV6HahI9EopoArg3g7p51fQGqOq.png",
+            "slug": "vehicle-plates",
+            "children": null,
+            "circle_icon": "https://staging.mazaady.com/images/empty.png",
+            "disable_shipping": 0
+        }
+    ],
+    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/xDADUsHAoXG5F5IBc8vkzo7VimMmxV2uw1Ty3c3V.png",
+    "disable_shipping": 0
+}

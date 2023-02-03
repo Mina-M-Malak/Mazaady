@@ -9,9 +9,12 @@ import Foundation
 
 class SearchViewModel {
     
+    var loadingState: ((_ isShowing: Bool) -> ())?
+    
     func fetchCategories(complation: @escaping (_ result: RequestState<[Category]>)->()) {
-        complation(.loading)
-        APIRoute.shared.fetch(with: .getAllCars, model: APIResponse<CategoriesData>.self) { (response) in
+        loadingState?(true)
+        APIRoute.shared.fetch(with: .getAllCars, model: APIResponse<CategoriesData>.self) { [weak self] (response) in
+            self?.loadingState?(false)
             switch response{
             case .success(let data):
                 complation(.success(data.data.categories))
@@ -22,8 +25,9 @@ class SearchViewModel {
     }
     
     func fetchProperties(subcategoryId: Int,complation: @escaping (_ result: RequestState<[Property]>)->()) {
-        complation(.loading)
-        APIRoute.shared.fetch(with: .getProperties(subcategoryId: subcategoryId), model: APIResponse<[Property]>.self) { (response) in
+        loadingState?(true)
+        APIRoute.shared.fetch(with: .getProperties(subcategoryId: subcategoryId), model: APIResponse<[Property]>.self) { [weak self] (response) in
+            self?.loadingState?(false)
             switch response{
             case .success(let data):
                 complation(.success(data.data))
@@ -34,8 +38,9 @@ class SearchViewModel {
     }
     
     func fetchChildOptions(propertyId: Int,complation: @escaping (_ result: RequestState<[Property]>)->()) {
-        complation(.loading)
-        APIRoute.shared.fetch(with: .getChildOptions(optionId: propertyId), model: APIResponse<[Property]>.self) { (response) in
+        loadingState?(true)
+        APIRoute.shared.fetch(with: .getChildOptions(optionId: propertyId), model: APIResponse<[Property]>.self) { [weak self] (response) in
+            self?.loadingState?(false)
             switch response{
             case .success(let data):
                 complation(.success(data.data))

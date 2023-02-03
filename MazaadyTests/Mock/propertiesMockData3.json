@@ -1,0 +1,12 @@
+{
+    "id": 53,
+    "name": "سنة الصنع",
+    "description": "",
+    "slug": "year",
+    "parent": null,
+    "list": false,
+    "type": "date",
+    "value": "",
+    "other_value": null,
+    "options": []
+}

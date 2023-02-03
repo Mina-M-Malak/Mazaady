@@ -1,0 +1,27 @@
+{
+    "id": 50,
+    "name": "نوع الدراجه",
+    "description": "",
+    "slug": "type",
+    "parent": null,
+    "list": false,
+    "type": null,
+    "value": "",
+    "other_value": null,
+    "options": [
+        {
+            "id": 106,
+            "name": "هوائيه",
+            "slug": "bicycles",
+            "parent": 50,
+            "child": true
+        },
+        {
+            "id": 105,
+            "name": "ناريه",
+            "slug": "motorcycle",
+            "parent": 50,
+            "child": true
+        }
+    ]
+}

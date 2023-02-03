@@ -8,7 +8,6 @@
 import Foundation
 
 enum RequestState<t: Decodable>{
-    case loading
     case success(t)
     case failure(String)
 }

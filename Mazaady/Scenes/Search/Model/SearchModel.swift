@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CategoriesData: Decodable{
+struct CategoriesData: Codable{
     let categories: [Category]
 }
 
-struct Category: Decodable{
+struct Category: Codable{
     let id: Int
     let name: String
     let subcategories: [Subcategory]
@@ -22,12 +22,12 @@ struct Category: Decodable{
     }
 }
 
-struct Subcategory: Decodable{
+struct Subcategory: Codable{
     let id: Int
     let name: String
 }
 
-struct Property: Decodable{
+struct Property: Codable{
     let id: Int
     let name: String
     var options: [Option]
@@ -36,7 +36,7 @@ struct Property: Decodable{
     var otherValue: String?
 }
 
-struct Option: Decodable{
+struct Option: Codable{
     let id: Int
     let name: String
     let child: Bool

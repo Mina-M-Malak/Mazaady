@@ -1,0 +1,146 @@
+{
+    "id": 696,
+    "name": "القسم",
+    "description": null,
+    "slug": "department",
+    "parent": null,
+    "list": false,
+    "type": null,
+    "value": "",
+    "other_value": null,
+    "options": [
+        {
+            "id": 46662,
+            "name": "الاجهزة السمعية و البصرية و تحديد مواقع و الإكسسوارات",
+            "slug": "audio-visual-equipment-gps-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46674,
+            "name": "البطاريات و نظام الشحن و الإكسسوارات",
+            "slug": "batteries-charging-system-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46667,
+            "name": "الفرامل و الإكسسوارات",
+            "slug": "brakes-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46679,
+            "name": "منتجات تكميلية و تزين و الإكسسوارات",
+            "slug": "complementary-and-decorating-products-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46670,
+            "name": "نظام تبريد المحرك و الإكسسوارات",
+            "slug": "cooling-system-and-accessory",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46677,
+            "name": "القطع الكهربائية و الفيوزات و الكمبيوتر و الإكسسوارات",
+            "slug": "electrical-system-fuses-computers-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46668,
+            "name": "المحرك و الإكسسوارات",
+            "slug": "engine-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46673,
+            "name": "نظام العادم و الإكسسوارات",
+            "slug": "exhaust-system-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46680,
+            "name": "الهيكل الخارجي و الإكسسوارات",
+            "slug": "exterior-parts-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46678,
+            "name": "نظام حقن الوقود والاكسسوارات",
+            "slug": "fuel-injection-system-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46669,
+            "name": "الجير بوكس و الكلتش و الإكسسوارات",
+            "slug": "gear-box-clutch-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46665,
+            "name": "الأجزاء الداخلية و الإكسسوارات",
+            "slug": "interior-parts-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46664,
+            "name": "الإنارة و أجهزة االإشارة و الإكسسوارات",
+            "slug": "lighting-signal-devices-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46663,
+            "name": "أجهزة القياس و الإكسسوارات",
+            "slug": "measuring-devices-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46675,
+            "name": "الزيوت و التشحيم و الفلاتر و الإكسسوارات",
+            "slug": "oils-lubricants-filters-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46676,
+            "name": "الربر و البراغي و الرومانات الإكسسوارات",
+            "slug": "seals-bolts-and-bearing-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46671,
+            "name": "نظام عجلة القيادة و الإكسسوارات",
+            "slug": "steering-system-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46672,
+            "name": "نظام الرفع الهدروليكي و المساعدات و الإكسسوارات",
+            "slug": "suspension-system-axle-and-accessories",
+            "parent": 696,
+            "child": false
+        },
+        {
+            "id": 46666,
+            "name": "الإطارات و الإكسسوارات",
+            "slug": "tires-and-accessories",
+            "parent": 696,
+            "child": false
+        }
+    ]
+}
