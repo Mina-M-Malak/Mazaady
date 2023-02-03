@@ -31,7 +31,21 @@ class SearchViewController: UIViewController {
             guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
             sections.removeAll(where: {$0 == .option})
             let subcategoryId = categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id
-            viewModel.fetchProperties(subcategoryId: subcategoryId)
+            viewModel.fetchProperties(subcategoryId: subcategoryId) { [weak self] (result) in
+                switch result {
+                case .success(let properties):
+                    guard let strongSelf = self else { return }
+                    strongSelf.handleRefreshControl(false)
+                    strongSelf.properties = properties
+                    strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
+                    strongSelf.searchTableView.reloadData()
+                case .loading:
+                    self?.handleRefreshControl(true)
+                case .failure(let err):
+                    self?.handleRefreshControl(false)
+                    self?.showAlert(title: "Error",message: err)
+                }
+            }
         }
     }
     
@@ -48,8 +62,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        setObservers()
-        viewModel.fetchData()
+        fetchCategories()
     }
     
     private func setupUI() {
@@ -63,30 +76,18 @@ class SearchViewController: UIViewController {
         searchTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
     
-    private func setObservers() {
-        viewModel.showLoader = { [weak self] (isLoading) in
-            self?.handleRefreshControl(isLoading)
-        }
-        
-        viewModel.getCategories = { [weak self] (categories) in
-            self?.categories = categories
-        }
-        
-        viewModel.getProperties = { [weak self] (properties) in
-            guard let strongSelf = self else { return }
-            strongSelf.properties = properties
-            strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
-            strongSelf.searchTableView.reloadData()
-        }
-        
-        viewModel.getChildOptions = { [weak self] (options) in
-            guard let loadedSectionIndex = self?.loadedSectionIndex else { return }
-            self?.properties[loadedSectionIndex].child = options
-            self?.searchTableView.reloadSections(IndexSet(integer: loadedSectionIndex + 2), with: .automatic)
-        }
-        
-        viewModel.showError = { [weak self] (errorMessage) in
-            self?.showAlert(title: "Error",message: errorMessage)
+    private func fetchCategories() {
+        viewModel.fetchCategories { [weak self] (result) in
+            switch result {
+            case .success(let categories):
+                self?.handleRefreshControl(false)
+                self?.categories = categories
+            case .loading:
+                self?.handleRefreshControl(true)
+            case .failure(let err):
+                self?.handleRefreshControl(false)
+                self?.showAlert(title: "Error",message: err)
+            }
         }
     }
     
@@ -215,7 +216,21 @@ class SearchViewController: UIViewController {
             if (properties[section].options[index].child) {
                 // get childs
                 loadedSectionIndex = section
-                viewModel.fetchChildOptions(propertyId: properties[section].options[index].id)
+                viewModel.fetchChildOptions(propertyId: properties[section].options[index].id,complation: { [weak self] (result) in
+                    switch result {
+                    case .success(let options):
+                        guard let strongSelf = self else { return }
+                        strongSelf.handleRefreshControl(false)
+                        guard let loadedSectionIndex = self?.loadedSectionIndex else { return }
+                        strongSelf.properties[loadedSectionIndex].child = options
+                        strongSelf.searchTableView.reloadSections(IndexSet(integer: loadedSectionIndex + 2), with: .automatic)
+                    case .loading:
+                        self?.handleRefreshControl(true)
+                    case .failure(let err):
+                        self?.handleRefreshControl(false)
+                        self?.showAlert(title: "Error",message: err)
+                    }
+                })
             }
         }
         else {

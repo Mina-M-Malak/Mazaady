@@ -1,0 +1,767 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "سيارات ودرجات ومستلزماتها",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/o0XfOKPJ8qbPv3eTGohQ8lXafJ5nvmOJSQYIFNHW.png",
+            "slug": "cars-motorcycles-accessories",
+            "children": [
+                {
+                    "id": 13,
+                    "name": "سيارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/kEE9v9xOHnZrprP24h76ZmEL6iuXPOKetgrkyoY6.png",
+                    "slug": "cars",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 14,
+                    "name": "قطع غيار السيارات والإكسسوارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/2LpHboKSmYu9YE55pJWuRpEZkQ8qmeXzVRU6LnZ1.png",
+                    "slug": "auto-parts-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 15,
+                    "name": "دراجات نارية ودبابات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/dsMm47dXgwUnnq7LnbgXwVTuNSqAXBYpHUdnCNfI.png",
+                    "slug": "motorcycles",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 16,
+                    "name": "دراجات هوائية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/xHMFRm6nzB7lKppTMFMT6iKrQdFycual7Iaxge3f.png",
+                    "slug": "bicycles",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 17,
+                    "name": "مستلزمات الدراجات النارية والهوائية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/5fROaAcgSQQS5oEjBTsFn7L4HfKtOtaP1Tsb7jpu.png",
+                    "slug": "motorcycles-bicycles-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 100,
+                    "name": "لوحات السيارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/pJ392yoZzlpidyV6HahI9EopoArg3g7p51fQGqOq.png",
+                    "slug": "vehicle-plates",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/xDADUsHAoXG5F5IBc8vkzo7VimMmxV2uw1Ty3c3V.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 2,
+            "name": "تجهيزات الأثاث والمفروشات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/ITbpjt3i0REMt1Xy1i4p3V7eV7UMDtRvj5oc3BbM.png",
+            "slug": "furniture-furnishings-fittings",
+            "children": [
+                {
+                    "id": 18,
+                    "name": "الأثاث والمفروشات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/PANmuF9ZBKnZF4POad76I5pyQRzS0aZ6G7DCAwEw.png",
+                    "slug": "furniture-furnishings",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 19,
+                    "name": "أثاث ومعدات مكتبية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/O0xZ5mzWRSdA10HIN9Z4FeJgd7aFnpmwYxmh5FGg.png",
+                    "slug": "office-furniture-equipment",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 20,
+                    "name": "ألعاب أطفال ومستلزماتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/B2CymikMQAqGgXGgsdVYnBVsTVyDSzUDI3dlolZE.png",
+                    "slug": "kids-toys-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 21,
+                    "name": "معدات مطاعم ومطابخ",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/zAONXWADvDmKqa7RBcKQDQR5PEqz59WhbrDB7H68.png",
+                    "slug": "restaurants-kitchens-equipment",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 22,
+                    "name": "تحف وهدايا",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/9LTbJusjswrj9eXEQeJzRly8NOhTEojVQU2wNp4S.jpg",
+                    "slug": "modern-antique-gifts",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 103,
+                    "name": "منتجات العناية المنزلية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/Pk3PmgTWtlYpCmqS2mIijJyWg4sTikXcym5Mu9zy.png",
+                    "slug": "home-care-products",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/IhYwMcbRrZDHIXVP9EeIEMJreyY456LeueRYkGQK.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 3,
+            "name": "الأجهزة الكهربائية و الجوالات وإكسسواراتها",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/cxNoWV9YoI4J7GYBJkcmm9vJ6ejCKEB9aaRVaPCP.png",
+            "slug": "electrical-mobiles-accessories",
+            "children": [
+                {
+                    "id": 23,
+                    "name": "الأجهزة الكهربائية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/tQ1FQTdxfPrgQjQmK3WrlfXOESZsPmS2C3rMDWUD.png",
+                    "slug": "electrical-devices",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 24,
+                    "name": "الجوالات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/ewwyibMBfax3XLZLRQxRG3Q8r0iUqcGGLJn3lOxs.png",
+                    "slug": "mobile-phones",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 25,
+                    "name": "إكسسوارات الجوالات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/37SLwpWEsuyHsDKL3WZpRl6tr5akTTrhmUg4brrI.jpg",
+                    "slug": "mobile-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 26,
+                    "name": "الكمبيوترات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/EE8Erfg2x9v1PXTnhP096WSOSj1u50wLnMUmGIXk.png",
+                    "slug": "computers",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 27,
+                    "name": "ملحقات الكمبيوتر",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/GwJTGOy829rP1VV9P3yUsdPSPX6RNNIaEA3QMujI.png",
+                    "slug": "computer-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 28,
+                    "name": "ألعاب الفيديو  ونظارات الواقع الإفتراضي والدرونز وملحقاتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/yLyw5Klj2OKkZEipUzIXcuQTzHT3aIUz2XY2AqHB.png",
+                    "slug": "video-games-vr-glassesdrones-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 29,
+                    "name": "الكاميرات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/WeypOFmDRBtoDQ6ew2z2LUMBPqx9Kb8wXKQZZX2Q.png",
+                    "slug": "cameras",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 30,
+                    "name": "ملحقات الكاميرات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/Wdmc32oukm6oMLF4RvpCdXTyOkUIwN9iBbz3ycFN.png",
+                    "slug": "accessories-for-cameras",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 31,
+                    "name": "أجهزة ومعدات رياضية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/BqE4StDkGOqyOYGmEcqukFAK8vQzHBirOCowt8z1.png",
+                    "slug": "fitness-equipment-devices",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 99,
+                    "name": "الألات الموسيقية والأفلام والإكسسوارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/nMy9YlDN8tUvqVGTERuWG9cBneaLeqH0HMWdgDNu.png",
+                    "slug": "musical-instruments-dvd-films-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 101,
+                    "name": "الأرقام المميزة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/NZugaXbKBwFB0EPLUOhHVKBhuHLIObhUzEqdUajy.png",
+                    "slug": "vip-numbers",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/nfqhdsEH8lxqImb6wqDbSGoFYZ3LTyL6cujtfuhT.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 4,
+            "name": "العقارات و الأسماء التجارية",
+            "description": "trade names",
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/jC5NYVx5L0wBsCQ8BWEkJRrK2PsVYo04lRwyLoJW.png",
+            "slug": "real-estate-trade-names",
+            "children": [
+                {
+                    "id": 32,
+                    "name": "عقارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/UEihjEGNlML6UhADUujfF23wyEfzflcI2LdgzKgB.png",
+                    "slug": "real-estates",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 33,
+                    "name": "أراضي",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/opKBYlP6yE6XyDqt5IxLvxsmJiT7mF4onaOZyBuu.png",
+                    "slug": "lands",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 105,
+                    "name": "الأسماء والعلامات التجارية",
+                    "description": "Trade and brand names",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/tlUnXVwTxxQMgeyrVZVmjpkSYUPbelXNjb9PIJm7.png",
+                    "slug": "trade-and-brand-names",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/9dQpsTn0fa2pYZ6JW4zCFQEg577305JhgFuskC4m.png",
+                    "disable_shipping": 1
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/8UQuNLTFVN6M4O1lDr1Ili0oDXkGsIfnEn9W9EOh.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 5,
+            "name": "الحيوانات ومستلزماتها",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/8NwtQ2L1f7hA4vYxZX4h7R2vYVOyMWMhLM43ohgd.png",
+            "slug": "animals-accessories",
+            "children": [
+                {
+                    "id": 34,
+                    "name": "حيوانات أليفة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/RSTTaAKLW0k0Cg7hf2THYRbjmVaqok6Ul5rASHQT.png",
+                    "slug": "pets-animal",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 35,
+                    "name": "حيوانات مزارع",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/oz4vZ15wPncV5v3O33Ar8WcJbyQjKD7tsMdakrRn.png",
+                    "slug": "farms-animal",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 36,
+                    "name": "حيوانات غريبة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/uQQGSth6kZSLDigDjq9zFoehKJ6TiTSph9CBf6Jg.png",
+                    "slug": "exotic-animal",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 102,
+                    "name": "مستلزمات الحيوانات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/T1fw394FN0EaZDgrTK2qgwqtRa4tr2pwJiLK1Aqm.png",
+                    "slug": "animals-supplies",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/1m8nN0nCRjDHB1eVoZ35kyBCE1V7NLRIs4usTUMe.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 6,
+            "name": "المعدات والأدوات",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/Qgvt8DjzvNx7G7zx3nY3JkvNOo9bd1FiComVNbOI.png",
+            "slug": "equipments-tools",
+            "children": [
+                {
+                    "id": 38,
+                    "name": "معدات خفيفة وأدوات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/b6O3eiVAe51eLdLgEbZo6o7nWvUTaVzgiqwoCMXn.png",
+                    "slug": "light-equipment-tools",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 39,
+                    "name": "تجهيزات رحلات وصيد وإكسسواراتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/XRTtJYBBSrw0ET7bLer7vtECS5QPrlzhBDuxA9yt.png",
+                    "slug": "fishing-hunting-equipments-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 40,
+                    "name": "قوارب و مستلزمات الأنشطة البحرية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/iRr9Bag6KrKScdNd8kPJcu7OIw1cLZ64SYrK5NkM.png",
+                    "slug": "boats-sea-activities",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 41,
+                    "name": "سكراب",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/2NVi6zySej4vuX9LtgIeLlYUb3khlc0DSIX5VqXV.png",
+                    "slug": "scrap",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 97,
+                    "name": "معدات ثقيلة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/WRM4bwQMeQOBuT72XZXH4vJjdgW8y4bOJJsqIxtc.png",
+                    "slug": "heavy-equipment",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/AFaOwDZ0IDmC4P1pBkrEGyM37nhRodJafEOXQD5L.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 7,
+            "name": "ملابس وأحذية وحقائب",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/11BMZuKddmzd7epTsjZxXwxIculvgLwufzYnm15u.png",
+            "slug": "clothing-shoes-bags",
+            "children": [
+                {
+                    "id": 42,
+                    "name": "ملابس",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/ose7w4laNg2ZDLaMKXbm5Bp12eZtsiVp95NH31Hs.png",
+                    "slug": "clothes",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 43,
+                    "name": "أحذية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/hHl1VBkEaKJcNtBJpGEiHU5hXlxxK3RGYlnWVpuj.png",
+                    "slug": "shoes",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 44,
+                    "name": "حقائب",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/BIawzrpf1rgvKfFlVPh2oWGwmLTh7Yg9PxkgDZoG.png",
+                    "slug": "bags",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 45,
+                    "name": "منتجات مدرسية ومكتبية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/kRIV47abxgIkFps92sbz4GXM4DDZGhSpOGfGctk4.png",
+                    "slug": "school-office-supplies",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 98,
+                    "name": "قماش و لوازم خياطة وإكسسواراتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/5jQwmcjg5NaQ5X18F7TUjoiAA7EfQTQz8nFkcwqu.png",
+                    "slug": "fabric-sewing-supplies-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/KYd0lwXqVkzD44Qn05kAINeKBW4uevP0gkoS2kFC.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 8,
+            "name": "أنتيك وعملات قديمة ولوحات فنية",
+            "description": "a",
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/Gp53HRap9FCQkS8cIYmY1yohvViTyJrNeMZ9Dnug.jpg",
+            "slug": "antique-coins-art",
+            "children": [
+                {
+                    "id": 94,
+                    "name": "أنتيك وعملات قديمة ولوحات فنية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/T7cpT44BW8wHEwCxcU9pjk6JxwGjVAoEl4GJEfUb.png",
+                    "slug": "antique-coins-art",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/EWaqb6pSgxnCrziiK9Shtf106mVP3QmhAhct6PBK.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 9,
+            "name": "إكسسوارات وعطور",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/xLhUrgj8I9WMu5a253AhqXpu1n5VyuaydeyqmsvS.png",
+            "slug": "fragrances-accessories",
+            "children": [
+                {
+                    "id": 52,
+                    "name": "ساعات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/zhibgOEiWxnIDHDPt7wKyQKjqpQ3ieMQR0HPAeAQ.png",
+                    "slug": "watches",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 53,
+                    "name": "نظارات وعدسات وإكسسواراتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/0sanvOEGweUD6ECoTh0n2R2kcjXTBmWdYICq3KQO.png",
+                    "slug": "eyeglasses-lenses-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 54,
+                    "name": "مجوهرات و إكسسوارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/d4F7uxOES6lE1ffQpiW4M8NfvSPjber7wJbyzNmk.png",
+                    "slug": "jewelry-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 55,
+                    "name": "ماكياج ومنتجات العناية الشخصية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/u7kHuu1QF5nRFMyVhfoRQEzbkmJXudQjmAkLgPVM.png",
+                    "slug": "makeup-personal-care-product",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 56,
+                    "name": "العطور",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/pyPML1vCRcyNC3YAW75UoF13flAqPABOjMhsIT8M.png",
+                    "slug": "fragrances",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/RkA3Sv2RmkbWyTunisP2RhjLwHFCQukoed6DUucq.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 10,
+            "name": "منتجات ومعدات طبية",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/Z8twiScyNDs6uBGmntxRyaiLJY7stSXoQNo1ZNRn.png",
+            "slug": "medical-products-equipment",
+            "children": [
+                {
+                    "id": 57,
+                    "name": "الفيتامينات والمكملات الغذائية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/GM9rpZQWFxletZDgb1wmvpTeEkopLmDIlNiHWMRV.png",
+                    "slug": "vitamin-dietary-supplements",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 58,
+                    "name": "لوازم الرعاية الصحية والأسرية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/I3OFleo9BU2XD7SD4cWoYVAYMG3NwlTnryyZhgIS.png",
+                    "slug": "family-health-care",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 59,
+                    "name": "منتجات المكملات الرياضية",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/R2gHYUK9UtHNdsVM5JVtYMM1p89spqPz7FueGHSp.png",
+                    "slug": "sport-nutrition",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 60,
+                    "name": "المعدات الطبية و إكسسواراتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/M36589jGwT7HKJElfCwR3XsqiwTfV2Kmmc9zEnd7.png",
+                    "slug": "medical-equipment-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/o380zsly5VYZIrSlnnrl6qQtDXIMtA9hHh4UGOro.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 11,
+            "name": "تجهيزات الحدائق والمسابح , المعدات الزراعية",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/qiJVnhy5Suu03fx6FVcKQ90GF6p0dDHrz8X8TRlJ.png",
+            "slug": "gardens-swimming-pool-supplies-agricultural-equipment",
+            "children": [
+                {
+                    "id": 61,
+                    "name": "مستلزمات حدائق وملحقاتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/la1SKYSxmeH0DLoRNFChQuEcR2sXdt03N1Eyhw0x.png",
+                    "slug": "garden-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 62,
+                    "name": "معدات ولوازم الزراعة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/PHOWjQ7rTWQLIXB5IjwssEU6FmYQI80uOmOUvqmg.png",
+                    "slug": "agriculture-equipments-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 63,
+                    "name": "مستلزمات المسابح والإكسسوارات",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/2qFRYZwQRWW8PvwaWjIKy3GzwPljUM9xBFLcWvmH.png",
+                    "slug": "swimming-pool-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 64,
+                    "name": "أرضيات رياضية متعددة الإستخدام والعشب الطبيعي والصناعي",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/wsBcMmPe3DkpBlxk3lKtVZ781RwPEbQaox7LE9it.png",
+                    "slug": "multipurpose-sport-flooring-landscaping",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                },
+                {
+                    "id": 65,
+                    "name": "مضخة المياه ونظام الفلترة وملحقاتها",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/q0BSNmZ9QqMe4Ij1cSZqAwfxOGiTZcHEbLeI26Ui.png",
+                    "slug": "water-pump-filtration-system-accessories",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 0
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/0kKacJtRgqXUdU6d9ofHBatOPWxVPrLsNge0aq2P.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 12,
+            "name": "منتجات غذائية وعطارة",
+            "description": null,
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/iZWCAAx8lwtlRRe3v7kEjFM8w6jGh580M6Z6HLxm.png",
+            "slug": "food-herb-products",
+            "children": [
+                {
+                    "id": 95,
+                    "name": "منتجات غذائية وعطارة",
+                    "description": null,
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/1/kTdFMgfZv4DfRbXI3FlhcnWi8gbphHRaRKOxP8Dr.png",
+                    "slug": "food-herb-product",
+                    "children": null,
+                    "circle_icon": "https://staging.mazaady.com/images/empty.png",
+                    "disable_shipping": 1
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon2/zi2C6zeloQLIeeFaN8oVWDlikrl29RGc3SRs5ACV.png",
+            "disable_shipping": 0
+        },
+        {
+            "id": 104,
+            "name": "تكنولوجيا المعلومات",
+            "description": "Information Technology",
+            "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/Mb7dG0ZzKiN1yeMYdxzeVXr7Xm6eN3mLlIgbIKA4.png",
+            "slug": "information-technology",
+            "children": [
+                {
+                    "id": 106,
+                    "name": "الدومين",
+                    "description": "Domain",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/T42qkKBfMViLa3Vv8G8n1imrmJ1cCYGDcPZ3M9FA.png",
+                    "slug": "domain",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/en2Dhk6kXljYrrgXVvtaqJmJeyc9uN9vSM1F7e24.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 107,
+                    "name": "المواقع الإلكترونية",
+                    "description": "Websites",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/10wsCuCRXzQvhqoM1D1Mk2F5PgyNQxRcTaC2qoT6.png",
+                    "slug": "websites",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/51CWNEJeXMiHmCeFnIgaW73tI2dhgzVDTNhnBRCh.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 108,
+                    "name": "التطبيقات",
+                    "description": "Applications",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/pHf7NY3qEQqb107ibOplvREeUaR5mfBnz2z8lHa6.png",
+                    "slug": "applications",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/FAbzMuanSBrWpYR6maDbyC4LrZGmVLHOXZRdeY1v.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 109,
+                    "name": "البرامج",
+                    "description": "Programs",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/Zn3IHjIXEBNw1mAVaGtvhanYEBl0B3AlBd0eZHTe.png",
+                    "slug": "programs",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/IWyrB9KfU0m0XzlYQxxCUFhZf0liJk6CXMmI5f01.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 110,
+                    "name": "منصات التواصل الإجتماعي",
+                    "description": "Social media platforms",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/GakPHgoHgwKjeVLXBlOEY6IUETOv3hqu97WGz7Ev.png",
+                    "slug": "social-media-platforms",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/AF7tOfqYnBzM1E364s0SncpzO7otZUFNmgu04YNS.png",
+                    "disable_shipping": 1
+                },
+                {
+                    "id": 111,
+                    "name": "البرمجيات والخوارزميات",
+                    "description": "Software and algorithms",
+                    "image": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/2/mwOfODRjXarjh6lRqbFv3kWWn1LNGbdFm3KJnOOQ.png",
+                    "slug": "software-and-algorithms",
+                    "children": null,
+                    "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/0rFyS4RJiGbrRhtE8MVWG5DAZrCFUDQAU8lT1nGQ.png",
+                    "disable_shipping": 1
+                }
+            ],
+            "circle_icon": "https://mazaady-test.s3.us-east-2.amazonaws.com/categories/circle_icon/2/ChnNAA4Vqu2SLnfTRoydFZBbxKeTPSx2uZkzC9Xl.png",
+            "disable_shipping": 0
+        }
+    ]
+}

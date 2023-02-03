@@ -1,15 +1,17 @@
 //
-//  MazaadyTests.swift
+//  SearchViewModelTest.swift
 //  MazaadyTests
 //
-//  Created by Mina Malak on 01/02/2023.
+//  Created by Mina Malak on 03/02/2023.
 //
 
 import XCTest
 @testable import Mazaady
 
-final class MazaadyTests: XCTestCase {
-
+final class SearchViewModelTest: XCTestCase {
+    
+    var viewModel = SearchViewModel()
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -32,4 +34,9 @@ final class MazaadyTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testGetCategories() {
+        viewModel.fetchCategories()
+    }
+
 }
