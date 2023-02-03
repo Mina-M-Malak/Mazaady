@@ -197,37 +197,47 @@ class SearchViewController: UIViewController {
     }
     
     private func didSelectOption(indexPath: IndexPath,index: Int) {
-        let section = indexPath.section - 2
+        
         if indexPath.row == 0 {
             // Main Prop
-            if (properties[section].options.count) > index {
-                guard properties[section].selectedOptionIndex != index else { return }
-                properties[section].selectedOptionIndex = index
-                if (properties[section].options[index].child) {
-                    // get childs
-                    loadedSectionIndex = section
-                    viewModel.fetchChildOptions(propertyId: properties[section].options[index].id)
-                }
-            }
-            else {
-                // Other
-                properties[section].selectedOptionIndex = -1
-            }
-            
-            if !(properties[section].child?.isEmpty ?? true) {
-                properties[section].child?.removeAll()
-                searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
-            }
+            updateMainOption(indexPath: indexPath, index: index)
         }
         else{
-            // Child Prop
-            if (properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
-                properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
+            updateChildOption(indexPath: indexPath, index: index)
+        }
+    }
+    
+    private func updateMainOption(indexPath: IndexPath,index: Int) {
+        let section = indexPath.section - 2
+        if (properties[section].options.count) > index {
+            guard properties[section].selectedOptionIndex != index else { return }
+            properties[section].selectedOptionIndex = index
+            if (properties[section].options[index].child) {
+                // get childs
+                loadedSectionIndex = section
+                viewModel.fetchChildOptions(propertyId: properties[section].options[index].id)
             }
-            else {
-                // Other
-                properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
-            }
+        }
+        else {
+            // Other
+            properties[section].selectedOptionIndex = -1
+        }
+        
+        if !(properties[section].child?.isEmpty ?? true) {
+            properties[section].child?.removeAll()
+            searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+        }
+    }
+    
+    private func updateChildOption(indexPath: IndexPath,index: Int) {
+        let section = indexPath.section - 2
+        // Child Prop
+        if (properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
+            properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
+        }
+        else {
+            // Other
+            properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
         }
     }
     
