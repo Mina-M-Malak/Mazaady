@@ -100,10 +100,23 @@ class SearchViewController: UIViewController {
         else if let selectedCategoryIndex = selectedCategoryIndex {
             results = [ResultModel(key: "Category", value: categories[selectedCategoryIndex].name)]
         }
+        
         properties.forEach { (property) in
-            if let selectedOptionIndex = property.selectedOptionIndex {
+            if let selectedOptionIndex = property.selectedOptionIndex , selectedOptionIndex != -1 {
                 results.append(ResultModel(key: property.name, value: property.options[selectedOptionIndex].name))
             }
+            else if let otherValue = property.otherValue {
+                results.append(ResultModel(key: property.name, value: otherValue))
+            }
+            
+            property.child?.forEach({ (property) in
+                if let selectedOptionIndex = property.selectedOptionIndex , selectedOptionIndex != -1  {
+                    results.append(ResultModel(key: property.name, value: property.options[selectedOptionIndex].name))
+                }
+                else if let otherValue = property.otherValue {
+                    results.append(ResultModel(key: property.name, value: otherValue))
+                }
+            })
         }
         return results
     }

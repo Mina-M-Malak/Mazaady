@@ -115,6 +115,7 @@ class SearchInputTableViewCell: UITableViewCell {
                 dataPicker.selectRow(selectedOptionIndex, inComponent: 0, animated: false)
             }
             else {
+                otherTextField.text = property.otherValue
                 searchInputTextField.text = (property.options.isEmpty) ? property.otherValue ?? self.property?.options.last?.name : self.property?.options.last?.name
                 selectedIndex = property.options.count
                 dataPicker.selectRow(property.options.count, inComponent: 0, animated: false)
@@ -198,10 +199,7 @@ extension SearchInputTableViewCell: UIPickerViewDelegate {
 extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         placeholderLabel.isHidden = false
-        guard textField == searchInputTextField else {
-            textField.text = nil
-            return
-        }
+        guard textField == searchInputTextField else { return }
         var defaultValue: String?
         switch section{
         case .category:
