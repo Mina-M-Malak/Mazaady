@@ -22,6 +22,7 @@ class APIRoute {
             let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             request.httpBody = jsonData
         }
+        request.addHeaders(clientRequest.headers)
         
         if sessionTask != nil {
             if (sessionTask?.originalRequest?.url?.absoluteString.contains(clientRequest.path) ?? false) {
