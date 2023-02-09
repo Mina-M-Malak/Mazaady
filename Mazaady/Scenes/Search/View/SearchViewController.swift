@@ -16,11 +16,11 @@ class SearchViewController: UIViewController {
     
     private var selectedCategoryIndex: Int?{
         didSet{
-            if sections.contains(.option){
-                sections.removeAll(where: {$0 == .option})
+            if !viewModel.properties.isEmpty{
+                viewModel.properties.removeAll()
                 searchTableView.reloadData()
             }
-            else if let subcategorySectionIndex = sections.firstIndex(where: {$0 == .subcategory}) {
+            else if let subcategorySectionIndex = SearchSections.allCases.firstIndex(where: {$0 == .subcategory}) {
                 searchTableView.reloadRows(at: [IndexPath(row: 0, section: subcategorySectionIndex)], with: .automatic)
             }
         }
@@ -29,15 +29,13 @@ class SearchViewController: UIViewController {
     private var selectedSubcategoryIndex: Int?{
         didSet{
             guard let selectedCategoryIndex = selectedCategoryIndex , let selectedSubcategoryIndex = selectedSubcategoryIndex else { return }
-            sections.removeAll(where: {$0 == .option})
+            viewModel.properties.removeAll()
+            searchTableView.reloadData()
             let subcategoryId = categories[selectedCategoryIndex].subcategories[selectedSubcategoryIndex].id
             viewModel.fetchProperties(subcategoryId: subcategoryId) { [weak self] (result) in
                 switch result {
-                case .success(let properties):
-                    guard let strongSelf = self else { return }
-                    strongSelf.properties = properties
-                    strongSelf.sections.append(contentsOf: SearchSections.AllCases(repeating: .option, count: strongSelf.properties.count))
-                    strongSelf.searchTableView.reloadData()
+                case .success:
+                    self?.searchTableView.reloadData()
                 case .failure(let err):
                     self?.showAlert(title: "Error",message: err)
                 }
@@ -50,9 +48,6 @@ class SearchViewController: UIViewController {
             searchTableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
     }
-    private var properties: [Property] = []
-    private var sections: [SearchSections] = [.category,.subcategory]
-    private var loadedSectionIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +66,22 @@ class SearchViewController: UIViewController {
         searchTableView.registerCell(tabelViewCell: SearchInputTableViewCell.self)
         
         searchTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+        
+        let SelectionView = SelectionView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.view.bringSubviewToFront(SelectionView)
+            SelectionView.performCardViewAnimation(state: true, isDeinit: false)
+        }
     }
     
     private func setObservers() {
         viewModel.loadingState = { [weak self] (isLoading) in
             self?.handleRefreshControl(isLoading)
+        }
+        
+        viewModel.didUpdateProperties = { [weak self] in
+            self?.searchTableView.reloadData()
         }
     }
     
@@ -101,22 +107,13 @@ class SearchViewController: UIViewController {
             results = [ResultModel(key: "Category", value: categories[selectedCategoryIndex].name)]
         }
         
-        properties.forEach { (property) in
+        viewModel.properties.forEach { (property) in
             if let selectedOptionIndex = property.selectedOptionIndex , selectedOptionIndex != -1 {
                 results.append(ResultModel(key: property.name, value: property.options[selectedOptionIndex].name))
             }
             else if let otherValue = property.otherValue {
                 results.append(ResultModel(key: property.name, value: otherValue))
             }
-            
-            property.child?.forEach({ (property) in
-                if let selectedOptionIndex = property.selectedOptionIndex , selectedOptionIndex != -1  {
-                    results.append(ResultModel(key: property.name, value: property.options[selectedOptionIndex].name))
-                }
-                else if let otherValue = property.otherValue {
-                    results.append(ResultModel(key: property.name, value: otherValue))
-                }
-            })
         }
         return results
     }
@@ -137,12 +134,12 @@ class SearchViewController: UIViewController {
     
     private func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
         let cell = searchTableView.dequeueCell(tabelViewCell: SearchInputTableViewCell.self, indexPath: indexPath)
-        cell.setData(section: sections[indexPath.section])
+        cell.setData(section: SearchSections.allCases[indexPath.section])
         cell.reloadCellHeight = { [weak self] in
             self?.searchTableView.beginUpdates()
             self?.searchTableView.endUpdates()
         }
-        switch sections[indexPath.section] {
+        switch SearchSections.allCases[indexPath.section] {
         case .category:
             setupCategoryCell(cell: cell)
         case .subcategory:
@@ -176,11 +173,8 @@ class SearchViewController: UIViewController {
     }
     
     private func setupOptionCell(cell: SearchInputTableViewCell,indexPath: IndexPath) {
-        let section = indexPath.section - 2
-        if let option = (indexPath.row == 0) ? properties[section] : properties[section].child?[indexPath.row - 1] {
-            let showOther: Bool = (option.selectedOptionIndex == -1 && !option.options.isEmpty )
-            cell.setOption(property: option,selectedOptionIndex: option.selectedOptionIndex, showOther: showOther)
-        }
+        let showOther: Bool = (viewModel.properties[indexPath.row].selectedOptionIndex == -1 && !viewModel.properties[indexPath.row].options.isEmpty )
+        cell.setOption(property: viewModel.properties[indexPath.row],selectedOptionIndex: viewModel.properties[indexPath.row].selectedOptionIndex, showOther: showOther)
         
         cell.didSelectItem = { [weak self] (index) in
             self?.didSelectOption(indexPath: indexPath, index: index)
@@ -188,67 +182,28 @@ class SearchViewController: UIViewController {
         
         cell.setText = { [weak self] (value) in
             if indexPath.row == 0 {
-                self?.properties[section].otherValue = value
+                self?.viewModel.properties[indexPath.row].otherValue = value
             }
             else {
-                self?.properties[section].child?[indexPath.row - 1].otherValue = value
+                self?.viewModel.properties[indexPath.row].otherValue = value
             }
         }
     }
     
     private func didSelectOption(indexPath: IndexPath,index: Int) {
-        
-        if indexPath.row == 0 {
-            // Main Prop
-            updateMainOption(indexPath: indexPath, index: index)
-        }
-        else{
-            updateChildOption(indexPath: indexPath, index: index)
-        }
+        updateProperty(indexPath: indexPath,index: index)
     }
     
-    private func updateMainOption(indexPath: IndexPath,index: Int) {
-        let section = indexPath.section - 2
-        if (properties[section].options.count) > index {
-            guard properties[section].selectedOptionIndex != index else { return }
-            properties[section].selectedOptionIndex = index
-            if (properties[section].options[index].child) {
-                // get childs
-                loadedSectionIndex = section
-                viewModel.fetchChildOptions(propertyId: properties[section].options[index].id,complation: { [weak self] (result) in
-                    switch result {
-                    case .success(let options):
-                        guard let strongSelf = self else { return }
-                        guard let loadedSectionIndex = self?.loadedSectionIndex else { return }
-                        strongSelf.properties[loadedSectionIndex].child = options
-                        strongSelf.searchTableView.reloadSections(IndexSet(integer: loadedSectionIndex + 2), with: .automatic)
-                    case .failure(let err):
-                        self?.showAlert(title: "Error",message: err)
-                    }
-                })
-            }
+    private func updateProperty(indexPath: IndexPath,index: Int) {
+        guard viewModel.properties[indexPath.row].selectedOptionIndex != index else { return }
+        if (viewModel.properties[indexPath.row].options.count) > index {
+            viewModel.properties[indexPath.row].selectedOptionIndex = index
         }
         else {
             // Other
-            properties[section].selectedOptionIndex = -1
+            viewModel.properties[indexPath.row].selectedOptionIndex = -1
         }
-        
-        if !(properties[section].child?.isEmpty ?? true) {
-            properties[section].child?.removeAll()
-            searchTableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
-        }
-    }
-    
-    private func updateChildOption(indexPath: IndexPath,index: Int) {
-        let section = indexPath.section - 2
-        // Child Prop
-        if (properties[section].child?[indexPath.row - 1].options.count ?? 0) > index {
-            properties[section].child?[indexPath.row - 1].selectedOptionIndex = index
-        }
-        else {
-            // Other
-            properties[section].child?[indexPath.row - 1].selectedOptionIndex = -1
-        }
+        viewModel.didSelectProperty(propertyIndex: indexPath.row,optionIndex: index)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -261,15 +216,15 @@ class SearchViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return SearchSections.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch sections[section]{
+        switch SearchSections.allCases[section]{
         case .category , .subcategory:
             return 1
         case .option:
-            return (properties[section - 2].child?.count ?? 0) + 1
+            return viewModel.properties.count
         }
     }
     

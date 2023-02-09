@@ -104,7 +104,7 @@ class SearchInputTableViewCell: UITableViewCell {
             searchInputTextField.inputView = nil
         }
         else if property.options.last?.id != 0 {
-            self.property!.options.append(Option(id: 0, name: "Other", child: false))
+            self.property!.options.append(Option(id: 0, name: "Other", hasChild: false))
         }
         
         if let selectedOptionIndex = selectedOptionIndex {
@@ -237,7 +237,7 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
             otherTextField.isHidden = true
             reloadCellHeight?()
         }
-        else if (self.property?.options.isEmpty ?? true){
+        else if section == .option , (self.property?.options.isEmpty ?? true){
             setText?(textField.text ?? "")
         }
     }

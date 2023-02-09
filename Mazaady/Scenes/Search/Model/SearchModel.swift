@@ -31,13 +31,18 @@ struct Property: Codable{
     let id: Int
     let name: String
     var options: [Option]
-    var child: [Property]?
     var selectedOptionIndex: Int?
     var otherValue: String?
+    var parentId: Int?
 }
 
 struct Option: Codable{
     let id: Int
     let name: String
-    let child: Bool
+    let hasChild: Bool
+    
+    enum CodingKeys: String , CodingKey {
+        case id , name
+        case hasChild = "child"
+    }
 }

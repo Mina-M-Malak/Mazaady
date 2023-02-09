@@ -22,4 +22,8 @@ class BaseTextField: UITextField {
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
 }
