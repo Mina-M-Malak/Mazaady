@@ -41,6 +41,7 @@ class SelectionView: TableFactoryCardView {
     init(options: [Option],selectedOptionIndex: Int?) {
         super.init(headerText: "", hasDoneButton: true)
         self.options = options
+        self.options?.append(Option(id: 0, name: "Other", hasChild: false))
         self.selectedIndex = selectedOptionIndex
     }
     
@@ -56,15 +57,17 @@ class SelectionView: TableFactoryCardView {
     
     private func getCell<t: UITableViewCell>(indexPath: IndexPath) -> t {
         let cell = tableView.dequeueCell(tabelViewCell: SelectionTableViewCell.self, indexPath: indexPath)
+        var isSelected = (indexPath.row == selectedIndex)
         switch type {
         case .category:
             cell.setCategory(category: categories?[indexPath.row])
         case .subcategory:
             cell.setSubcategory(subcategory: subcategories?[indexPath.row])
         case .option:
+            isSelected = (isSelected || (selectedIndex == -1 && ((indexPath.row == (options?.count ?? 0) - 1))))
             cell.setOption(option: options?[indexPath.row])
         }
-        cell.setCheckMark(isSelected: (indexPath.row == selectedIndex))
+        cell.setCheckMark(isSelected: isSelected)
         return cell as! t
     }
 }

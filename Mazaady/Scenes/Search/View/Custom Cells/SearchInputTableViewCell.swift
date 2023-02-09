@@ -145,7 +145,7 @@ class SearchInputTableViewCell: UITableViewCell {
         searchInputTextField.endEditing(true)
     }
     
-    func setSearchInput(index: Int,text: String) {
+    func setSearchInput(index: Int?,text: String?) {
         selectedIndex = index
         placeholderLabel.isHidden = false
         searchInputTextField.text = text

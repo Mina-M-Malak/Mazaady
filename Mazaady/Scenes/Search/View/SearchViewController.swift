@@ -129,8 +129,10 @@ class SearchViewController: UIViewController {
         let cell = searchTableView.dequeueCell(tabelViewCell: SearchInputTableViewCell.self, indexPath: indexPath)
         cell.setData(section: SearchSections.allCases[indexPath.section])
         cell.reloadCellHeight = { [weak self] in
-            self?.searchTableView.beginUpdates()
-            self?.searchTableView.endUpdates()
+            DispatchQueue.main.async {
+                self?.searchTableView.beginUpdates()
+                self?.searchTableView.endUpdates()
+            }
         }
         switch SearchSections.allCases[indexPath.section] {
         case .category:
@@ -184,7 +186,11 @@ class SearchViewController: UIViewController {
         }
         
         cell.didStartEditing = { [weak self] in
-            guard let strongSelf = self , let selectedCategoryIndex = strongSelf.selectedCategoryIndex else { return }
+            guard let strongSelf = self , let selectedCategoryIndex = strongSelf.selectedCategoryIndex else {
+                cell.textFieldEndEditing()
+                self?.showAlert(message: "Please select the category first")
+                return
+            }
             let selectionView = SelectionView.init(subcategories: strongSelf.categories[selectedCategoryIndex].subcategories,selectedSubcategoryIndex: strongSelf.selectedSubcategoryIndex)
             selectionView.type = .subcategory
             selectionView.didFinishAction = { (isOpen) in
@@ -226,17 +232,23 @@ class SearchViewController: UIViewController {
             }
             
             selectionView.didSelectItem = { [weak self] (index) in
-                cell.textFieldEndEditing()
+                if self?.viewModel.properties[indexPath.row].options.count == index {
+                    cell.setSearchInput(index: index, text: "Other")
+                    cell.textFieldEndEditing()
+                    self?.updateProperty(indexPath: indexPath,index: index)
+                }
+                else if self?.viewModel.properties[indexPath.row].selectedOptionIndex != index {
+                    cell.setSearchInput(index: index, text: self?.viewModel.properties[indexPath.row].options[index].name ?? "")
+                    cell.textFieldEndEditing()
+                    self?.updateProperty(indexPath: indexPath,index: index)
+                }
                 selectionView.performCardViewAnimation(state: false, isDeinit: false)
-                guard self?.viewModel.properties[indexPath.row].selectedOptionIndex != index else { return }
-                cell.setSearchInput(index: index, text: self?.viewModel.properties[indexPath.row].options[index].name ?? "")
-                self?.updateProperty(indexPath: indexPath,index: index)
             }
-
+            
             selectionView.doneButtonClicked = {
                 selectionView.performCardViewAnimation(state: false, isDeinit: false)
             }
-
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 strongSelf.view.bringSubviewToFront(selectionView)
                 selectionView.performCardViewAnimation(state: true, isDeinit: false)
