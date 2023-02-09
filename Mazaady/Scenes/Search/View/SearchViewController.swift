@@ -66,13 +66,6 @@ class SearchViewController: UIViewController {
         searchTableView.registerCell(tabelViewCell: SearchInputTableViewCell.self)
         
         searchTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
-        
-        let SelectionView = SelectionView()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.view.bringSubviewToFront(SelectionView)
-            SelectionView.performCardViewAnimation(state: true, isDeinit: false)
-        }
     }
     
     private func setObservers() {

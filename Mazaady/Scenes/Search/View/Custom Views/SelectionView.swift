@@ -8,18 +8,21 @@
 import UIKit
 
 class SelectionView: TableFactoryCardView {
-
-    private let activityIndicator:UIActivityIndicatorView = {
-        let av = UIActivityIndicatorView(style: .medium)
-        av.translatesAutoresizingMaskIntoConstraints = false
-        av.color = .black
-        av.hidesWhenStopped = true
-        av.isHidden = true
-        return av
-    }()
     
-    init() {
+    override var cardViewHeight:CGFloat {
+        guard !options.isEmpty else { return 250}
+        let value: CGFloat = CGFloat((options.count * 52) + 90)
+        if value > (UIScreen.main.bounds.height * 0.75){
+            return UIScreen.main.bounds.height * 0.75
+        }
+        return value
+    }
+    
+    private var options: [Option] = []
+    
+    init(options: [Option]) {
         super.init(headerText: "", hasDoneButton: true)
+        self.options = options
     }
     
     override func setupViews() {
@@ -37,11 +40,12 @@ class SelectionView: TableFactoryCardView {
 //MARK: - UITableViewDataSource
 extension SelectionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return options.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(tabelViewCell: SelectionTableViewCell.self, indexPath: indexPath)
+        cell.setOption(option: options[indexPath.row])
         return cell
     }
 }

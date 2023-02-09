@@ -16,4 +16,7 @@ class SelectionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    func setOption(option: Option) {
+        propertyLabel.text = option.name
+    }
 }
