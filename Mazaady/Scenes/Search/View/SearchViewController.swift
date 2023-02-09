@@ -58,7 +58,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setupUI() {
-        title = "Search"
+        title = "Search..."
         
         refreshControl.addTarget(self, action: #selector(handleRefresher), for: .valueChanged)
         
