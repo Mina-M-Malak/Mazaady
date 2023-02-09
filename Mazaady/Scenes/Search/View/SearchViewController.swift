@@ -151,6 +151,7 @@ class SearchViewController: UIViewController {
         cell.didStartEditing = { [weak self] in
             guard let strongSelf = self else { return }
             let selectionView = SelectionView.init(categories: strongSelf.categories,selectedCategoryIndex: strongSelf.selectedCategoryIndex)
+            selectionView.setHeader(title: "Category")
             selectionView.type = .category
             selectionView.didFinishAction = { (isOpen) in
                 if !isOpen {
@@ -192,6 +193,7 @@ class SearchViewController: UIViewController {
                 return
             }
             let selectionView = SelectionView.init(subcategories: strongSelf.categories[selectedCategoryIndex].subcategories,selectedSubcategoryIndex: strongSelf.selectedSubcategoryIndex)
+            selectionView.setHeader(title: "Subcategory")
             selectionView.type = .subcategory
             selectionView.didFinishAction = { (isOpen) in
                 if !isOpen {
@@ -224,6 +226,7 @@ class SearchViewController: UIViewController {
         cell.didStartEditing = { [weak self] in
             guard let strongSelf = self , !strongSelf.viewModel.properties[indexPath.row].options.isEmpty else { return }
             let selectionView = SelectionView.init(options: strongSelf.viewModel.properties[indexPath.row].options, selectedOptionIndex: strongSelf.viewModel.properties[indexPath.row].selectedOptionIndex)
+            selectionView.setHeader(title: strongSelf.viewModel.properties[indexPath.row].name)
             selectionView.type = .option
             selectionView.didFinishAction = { (isOpen) in
                 if !isOpen {

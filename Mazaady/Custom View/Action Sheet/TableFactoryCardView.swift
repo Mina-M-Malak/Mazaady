@@ -9,15 +9,16 @@ import UIKit
 
 class TableFactoryCardView : BottomActionSheetView {
     
-    private let headerLabel:UILabel = {
+    private let headerLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        lbl.textColor = .white
+        lbl.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        lbl.textColor = .black
+        lbl.textAlignment = .center
         return lbl
     }()
     
-    private lazy var doneButton:UIButton = {
+    private lazy var doneButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Done", for: .normal)
@@ -54,7 +55,7 @@ class TableFactoryCardView : BottomActionSheetView {
         return sb
     }()
     
-    private let hasDoneButton:Bool
+    private let hasDoneButton: Bool
     var doneButtonClicked: (()->())?
     deinit {
         searchBar.delegate = nil

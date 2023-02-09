@@ -9,7 +9,7 @@ import UIKit
 
 class BottomActionSheetView: UIView {
     
-    private let containerView:UIView = {
+    private let containerView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.layer.cornerRadius = 16
@@ -19,7 +19,7 @@ class BottomActionSheetView: UIView {
         return v
     }()
     
-    private lazy var darkView:UIView = {
+    private lazy var darkView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .lightGray.withAlphaComponent(0.5)
@@ -29,7 +29,7 @@ class BottomActionSheetView: UIView {
         return v
     }()
     
-    private lazy var dragingInvisibleView:UIView = {
+    private lazy var dragingInvisibleView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.isUserInteractionEnabled = true
@@ -39,7 +39,7 @@ class BottomActionSheetView: UIView {
         return v
     }()
     
-    private let dragView:UIView = {
+    private let dragView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .lightGray.withAlphaComponent(0.5)
@@ -48,7 +48,7 @@ class BottomActionSheetView: UIView {
         return v
     }()
     
-    private let hasDarkView:Bool
+    private let hasDarkView: Bool
     private var dragingInvisibleViewHeightAnchor:NSLayoutConstraint!
     private var cardViewHeightAnchor:NSLayoutConstraint!
     private var cardViewTopAnchor:NSLayoutConstraint!
@@ -56,14 +56,14 @@ class BottomActionSheetView: UIView {
     internal var cardViewHeight:CGFloat {
         return height
     }
-    internal var hasExpanded:Bool = false
-    internal var openOnSwipeDown:Bool {
+    internal var hasExpanded: Bool = false
+    internal var openOnSwipeDown: Bool {
         return false
     }
-    internal var expandableHeight:CGFloat? {
+    internal var expandableHeight: CGFloat? {
         return nil
     }
-    internal var isOpened:Bool = false
+    internal var isOpened: Bool = false
     var onPanCardView:((_ setActive:Bool, _ fromPan:Bool)->())?
     var didClickOnDragView: (()->())?
     var didFinishAction: ((_ isOpen: Bool)->())?
@@ -72,7 +72,7 @@ class BottomActionSheetView: UIView {
         print("Card view has been deinit")
     }
     
-    init(includeDarkView:Bool) {
+    init(includeDarkView: Bool) {
         self.hasDarkView = includeDarkView
         super.init(frame: .zero)
         setupView()
@@ -88,7 +88,7 @@ class BottomActionSheetView: UIView {
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    @objc private func dragAction(_ sender:UIPanGestureRecognizer) {
+    @objc private func dragAction(_ sender: UIPanGestureRecognizer) {
         guard let superview = superview else { return }
         
         let y = sender.translation(in: superview).y
