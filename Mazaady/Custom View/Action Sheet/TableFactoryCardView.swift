@@ -51,7 +51,7 @@ class TableFactoryCardView : BottomActionSheetView {
     let searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.translatesAutoresizingMaskIntoConstraints = false
-        sb.placeholder = "Search"
+        sb.placeholder = "Search..."
         return sb
     }()
     
