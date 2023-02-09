@@ -7,7 +7,6 @@ target 'Mazaady' do
 
   # Pods for Mazaady
     
-    pod 'IQKeyboardManagerSwift'
     pod 'Cosmos'
     
   target 'MazaadyTests' do

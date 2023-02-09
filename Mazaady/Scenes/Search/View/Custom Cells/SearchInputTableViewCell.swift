@@ -17,11 +17,10 @@ class SearchInputTableViewCell: UITableViewCell {
     private var categories: [Category]?
     private var subcategories: [Subcategory]?
     private var property: Property?
-    private let dataPicker = UIPickerView()
     private var section: SearchSections?
-    var didSelectItem: ((_ index: Int)->())?
     var reloadCellHeight: (()->())?
     var setText: ((_ value: String)->())?
+    var didStartEditing: (()->())?
     private var selectedIndex: Int?
     
     override func awakeFromNib() {
@@ -32,10 +31,7 @@ class SearchInputTableViewCell: UITableViewCell {
         searchInputTextField.setBorderColor(color: .lightGray, width: 0.5)
         searchInputTextField.makeRoundedCornersWith(radius: 8.0)
         
-        dataPicker.delegate = self
-        dataPicker.dataSource = self
-        
-        searchInputTextField.inputView = dataPicker
+        searchInputTextField.inputView = UIView()
         searchInputTextField.delegate = self
         otherTextField.delegate = self
         
@@ -60,13 +56,11 @@ class SearchInputTableViewCell: UITableViewCell {
             selectedIndex = selectedCategoryindex
             placeholderLabel.isHidden = false
             searchInputTextField.text = categories[selectedCategoryindex].name
-            dataPicker.selectRow(selectedCategoryindex, inComponent: 0, animated: false)
         }
         else {
             selectedIndex = nil
             placeholderLabel.isHidden = true
             searchInputTextField.text = nil
-            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
     }
     
@@ -80,13 +74,11 @@ class SearchInputTableViewCell: UITableViewCell {
             selectedIndex = selectedSubcategoryindex
             placeholderLabel.isHidden = false
             searchInputTextField.text = subcategories[selectedSubcategoryindex].name
-            dataPicker.selectRow(selectedSubcategoryindex, inComponent: 0, animated: false)
         }
         else{
             selectedIndex = nil
             placeholderLabel.isHidden = true
             searchInputTextField.text = nil
-            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
     }
     
@@ -98,7 +90,7 @@ class SearchInputTableViewCell: UITableViewCell {
         self.property = property
         otherTextField.isHidden = !showOther
         arrowImageView.isHidden = property.options.isEmpty
-        searchInputTextField.inputView = dataPicker
+        searchInputTextField.inputView = UIView()
         
         if property.options.isEmpty {
             searchInputTextField.inputView = nil
@@ -112,20 +104,17 @@ class SearchInputTableViewCell: UITableViewCell {
             if selectedOptionIndex != -1 {
                 searchInputTextField.text = property.options[selectedOptionIndex].name
                 selectedIndex = selectedOptionIndex
-                dataPicker.selectRow(selectedOptionIndex, inComponent: 0, animated: false)
             }
             else {
                 otherTextField.text = property.otherValue
                 searchInputTextField.text = (property.options.isEmpty) ? property.otherValue ?? self.property?.options.last?.name : self.property?.options.last?.name
                 selectedIndex = property.options.count
-                dataPicker.selectRow(property.options.count, inComponent: 0, animated: false)
             }
         }
         else if (property.otherValue?.isEmpty ?? true){
             selectedIndex = nil
             placeholderLabel.isHidden = true
             searchInputTextField.text = nil
-            dataPicker.selectRow(0, inComponent: 0, animated: false)
         }
         else{
             selectedIndex = nil
@@ -151,6 +140,16 @@ class SearchInputTableViewCell: UITableViewCell {
         pickerLabel.textColor = .black
         return pickerLabel
     }
+    
+    func textFieldEndEditing() {
+        searchInputTextField.endEditing(true)
+    }
+    
+    func setSearchInput(index: Int,text: String) {
+        selectedIndex = index
+        placeholderLabel.isHidden = false
+        searchInputTextField.text = text
+    }
 }
 
 //MARK: - UIPickerViewDataSource
@@ -175,26 +174,6 @@ extension SearchInputTableViewCell: UIPickerViewDataSource {
     }
 }
 
-//MARK: - UIPickerViewDelegate
-extension SearchInputTableViewCell: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedIndex = row
-        placeholderLabel.isHidden = false
-        switch section {
-        case .category:
-            searchInputTextField.text = categories?[row].name
-        case .subcategory:
-            searchInputTextField.text = subcategories?[row].name
-        default:
-            searchInputTextField.text = self.property?.options[row].name ?? "Other"
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        return setPickerLabel(row: row)
-    }
-}
-
 //MARK: - UITextFieldDelegate
 extension SearchInputTableViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -203,22 +182,23 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
         var defaultValue: String?
         switch section{
         case .category:
-            defaultValue = (selectedIndex == nil) ? categories?.first?.name: categories?[selectedIndex!].name
+            if let selectedIndex = selectedIndex {
+                defaultValue = categories?[selectedIndex].name
+            }
         case .subcategory:
-            defaultValue = (selectedIndex == nil) ? subcategories?.first?.name: subcategories?[selectedIndex!].name
+            if let selectedIndex = selectedIndex {
+                defaultValue = subcategories?[selectedIndex].name
+            }
         default:
             if (self.property?.options.isEmpty ?? true){
                 defaultValue = self.property?.otherValue
             }
-            else{
-                defaultValue = (selectedIndex == nil) ?(self.property?.options.first?.name) : self.property?.options[selectedIndex!].name
+            else if let selectedIndex = selectedIndex {
+                defaultValue = self.property?.options[selectedIndex].name
             }
         }
         textField.text = defaultValue
-        
-        if (selectedIndex == nil){
-            selectedIndex = 0
-        }
+        didStartEditing?()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -227,7 +207,6 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
             setText?(textField.text ?? "")
             return
         }
-        didSelectItem?(selectedIndex)
         if section == .option , !(self.property?.options.isEmpty ?? true) , self.property?.options[selectedIndex].id == 0 , otherTextField.isHidden{
             otherTextField.isHidden = false
             otherTextField.text = nil
@@ -240,5 +219,10 @@ extension SearchInputTableViewCell: UITextFieldDelegate {
         else if section == .option , (self.property?.options.isEmpty ?? true){
             setText?(textField.text ?? "")
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
     }
 }

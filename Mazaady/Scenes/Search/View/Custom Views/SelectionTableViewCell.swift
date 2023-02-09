@@ -16,7 +16,19 @@ class SelectionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setOption(option: Option) {
-        propertyLabel.text = option.name
+    func setCategory(category: Category?) {
+        propertyLabel.text = category?.name
+    }
+    
+    func setSubcategory(subcategory: Subcategory?) {
+        propertyLabel.text = subcategory?.name
+    }
+    
+    func setOption(option: Option?) {
+        propertyLabel.text = option?.name
+    }
+    
+    func setCheckMark(isSelected: Bool) {
+        accessoryType = isSelected ? .checkmark : .none
     }
 }

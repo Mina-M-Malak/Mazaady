@@ -145,13 +145,36 @@ class SearchViewController: UIViewController {
     
     private func setupCategoryCell(cell: SearchInputTableViewCell) {
         cell.setCategory(categories: categories,selectedCategoryindex: selectedCategoryIndex)
-        cell.didSelectItem = { [weak self] (index) in
-            guard index != self?.selectedCategoryIndex else { return }
-            self?.selectedSubcategoryIndex = nil
-            if let sectionIndex = SearchSections.allCases.firstIndex(where: {$0 == .subcategory}) {
-                self?.searchTableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+        
+        cell.didStartEditing = { [weak self] in
+            guard let strongSelf = self else { return }
+            let selectionView = SelectionView.init(categories: strongSelf.categories,selectedCategoryIndex: strongSelf.selectedCategoryIndex)
+            selectionView.type = .category
+            selectionView.didFinishAction = { (isOpen) in
+                if !isOpen {
+                    cell.textFieldEndEditing()
+                }
             }
-            self?.selectedCategoryIndex = index
+            
+            selectionView.didSelectItem = { [weak self] (index) in
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+                guard index != self?.selectedCategoryIndex else { return }
+                cell.setSearchInput(index: index, text: self?.categories[index].name ?? "")
+                self?.selectedSubcategoryIndex = nil
+                if let sectionIndex = SearchSections.allCases.firstIndex(where: {$0 == .subcategory}) {
+                    self?.searchTableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+                }
+                self?.selectedCategoryIndex = index
+            }
+            
+            selectionView.doneButtonClicked = {
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                strongSelf.view.bringSubviewToFront(selectionView)
+                selectionView.performCardViewAnimation(state: true, isDeinit: false)
+            }
         }
     }
     
@@ -159,9 +182,32 @@ class SearchViewController: UIViewController {
         if let selectedCategoryIndex = selectedCategoryIndex {
             cell.setSubcategory(subcategories: categories[selectedCategoryIndex].subcategories,selectedSubcategoryindex: selectedSubcategoryIndex)
         }
-        cell.didSelectItem = { [weak self] (index) in
-            guard self?.selectedSubcategoryIndex != index else { return }
-            self?.selectedSubcategoryIndex = index
+        
+        cell.didStartEditing = { [weak self] in
+            guard let strongSelf = self , let selectedCategoryIndex = strongSelf.selectedCategoryIndex else { return }
+            let selectionView = SelectionView.init(subcategories: strongSelf.categories[selectedCategoryIndex].subcategories,selectedSubcategoryIndex: strongSelf.selectedSubcategoryIndex)
+            selectionView.type = .subcategory
+            selectionView.didFinishAction = { (isOpen) in
+                if !isOpen {
+                    cell.textFieldEndEditing()
+                }
+            }
+            
+            selectionView.didSelectItem = { [weak self] (index) in
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+                guard self?.selectedSubcategoryIndex != index else { return }
+                cell.setSearchInput(index: index, text: self?.categories[index].name ?? "")
+                self?.selectedSubcategoryIndex = index
+            }
+            
+            selectionView.doneButtonClicked = {
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                strongSelf.view.bringSubviewToFront(selectionView)
+                selectionView.performCardViewAnimation(state: true, isDeinit: false)
+            }
         }
     }
     
@@ -169,8 +215,32 @@ class SearchViewController: UIViewController {
         let showOther: Bool = (viewModel.properties[indexPath.row].selectedOptionIndex == -1 && !viewModel.properties[indexPath.row].options.isEmpty )
         cell.setOption(property: viewModel.properties[indexPath.row],selectedOptionIndex: viewModel.properties[indexPath.row].selectedOptionIndex, showOther: showOther)
         
-        cell.didSelectItem = { [weak self] (index) in
-            self?.didSelectOption(indexPath: indexPath, index: index)
+        cell.didStartEditing = { [weak self] in
+            guard let strongSelf = self , !strongSelf.viewModel.properties[indexPath.row].options.isEmpty else { return }
+            let selectionView = SelectionView.init(options: strongSelf.viewModel.properties[indexPath.row].options, selectedOptionIndex: strongSelf.viewModel.properties[indexPath.row].selectedOptionIndex)
+            selectionView.type = .option
+            selectionView.didFinishAction = { (isOpen) in
+                if !isOpen {
+                    cell.textFieldEndEditing()
+                }
+            }
+            
+            selectionView.didSelectItem = { [weak self] (index) in
+                cell.textFieldEndEditing()
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+                guard self?.viewModel.properties[indexPath.row].selectedOptionIndex != index else { return }
+                cell.setSearchInput(index: index, text: self?.viewModel.properties[indexPath.row].options[index].name ?? "")
+                self?.updateProperty(indexPath: indexPath,index: index)
+            }
+
+            selectionView.doneButtonClicked = {
+                selectionView.performCardViewAnimation(state: false, isDeinit: false)
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                strongSelf.view.bringSubviewToFront(selectionView)
+                selectionView.performCardViewAnimation(state: true, isDeinit: false)
+            }
         }
         
         cell.setText = { [weak self] (value) in
@@ -181,10 +251,6 @@ class SearchViewController: UIViewController {
                 self?.viewModel.properties[indexPath.row].otherValue = value
             }
         }
-    }
-    
-    private func didSelectOption(indexPath: IndexPath,index: Int) {
-        updateProperty(indexPath: indexPath,index: index)
     }
     
     private func updateProperty(indexPath: IndexPath,index: Int) {
