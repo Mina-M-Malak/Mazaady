@@ -47,9 +47,17 @@ class TableFactoryCardView : BottomActionSheetView {
         return tbv
     }()
     
+    let searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.translatesAutoresizingMaskIntoConstraints = false
+        sb.placeholder = "Search"
+        return sb
+    }()
+    
     private let hasDoneButton:Bool
     var doneButtonClicked: (()->())?
     deinit {
+        searchBar.delegate = nil
         tableView.delegate = nil
         tableView.dataSource = nil
     }
@@ -67,6 +75,7 @@ class TableFactoryCardView : BottomActionSheetView {
         if hasDoneButton {
             addSubview(doneButton)
         }
+        addSubview(searchBar)
         addSubview(tableView)
     }
     
@@ -80,7 +89,8 @@ class TableFactoryCardView : BottomActionSheetView {
             doneButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         }
         sepratorView.anchor(top: headerLabel.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 24, left: 24, bottom: 0, right: 24),size: CGSize(width: 0, height: 0.3))
-        tableView.anchor(top: sepratorView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+        searchBar.anchor(top: sepratorView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0),size: CGSize(width: 0, height: 50))
+        tableView.anchor(top: searchBar.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder: NSCoder) {
@@ -89,7 +99,7 @@ class TableFactoryCardView : BottomActionSheetView {
 }
 
 
-// MARK:- Setters
+//MARK: - Setters
 extension TableFactoryCardView {
     /**
      Add your view to conform setTableDelegate
@@ -117,18 +127,23 @@ extension TableFactoryCardView {
         doneButton.isEnabled = enabled
         doneButton.alpha = enabled ? 1 : 0.5
     }
+    
+    public func setSearchDelegate(view:UIView) {
+        searchBar.delegate = view as? UISearchBarDelegate
+    }
 }
 
-// MARK:- Getters
+//MARK: - Getters
 extension TableFactoryCardView {
     func getTableView() -> UITableView {
         return tableView
     }
 }
 
-// MARK:- Actions
+//MARK: - Actions
 extension TableFactoryCardView {
     @objc func onTouchDone(_ sender: UIButton) {
+        searchBar.endEditing(true)
         doneButtonClicked?()
     }
 }

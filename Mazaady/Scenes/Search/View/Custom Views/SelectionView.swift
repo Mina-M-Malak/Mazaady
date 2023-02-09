@@ -10,45 +10,49 @@ import UIKit
 class SelectionView: TableFactoryCardView {
     
     override var cardViewHeight:CGFloat {
-        let count = categories?.count ?? subcategories?.count ?? options?.count ?? 0
-        guard count != 0 else { return 250}
-        let value: CGFloat = CGFloat((count * 52) + 90)
-        if value > (UIScreen.main.bounds.height * 0.75){
-            return UIScreen.main.bounds.height * 0.75
-        }
-        return value
+        return (UIScreen.main.bounds.height * 0.85)
     }
     
-    private var categories: [Category]?
-    private var subcategories: [Subcategory]?
-    private var options: [Option]?
+    private var customCategories: [Category]?
+    private var customSubcategories: [Subcategory]?
+    private var customOptions: [Option]?
+    private var allCategories: [Category]?
+    private var allSubcategories: [Subcategory]?
+    private var allOptions: [Option]?
     var didSelectItem: ((_ index: Int)->())?
     var type: SearchSections = .category
     private var selectedIndex: Int?
     
     init(categories: [Category],selectedCategoryIndex: Int?) {
         super.init(headerText: "", hasDoneButton: true)
-        self.categories = categories
-        self.selectedIndex = selectedCategoryIndex
+        allCategories = categories
+        customCategories = categories
+        selectedIndex = selectedCategoryIndex
     }
     
     init(subcategories: [Subcategory],selectedSubcategoryIndex: Int?) {
         super.init(headerText: "", hasDoneButton: true)
-        self.subcategories = subcategories
-        self.selectedIndex = selectedSubcategoryIndex
+        allSubcategories = subcategories
+        customSubcategories = subcategories
+        selectedIndex = selectedSubcategoryIndex
     }
     
     init(options: [Option],selectedOptionIndex: Int?) {
         super.init(headerText: "", hasDoneButton: true)
-        self.options = options
-        self.options?.append(Option(id: 0, name: "Other", hasChild: false))
+        customOptions = options
+        customOptions?.append(Option(id: 0, name: "Other", hasChild: false))
+        allOptions = customOptions
         self.selectedIndex = selectedOptionIndex
     }
     
     override func setupViews() {
         super.setupViews()
         super.setTableDelegate(view: self)
+        super.setSearchDelegate(view: self)
         getTableView().registerCell(tabelViewCell: SelectionTableViewCell.self)
+        didClickOnDragView = { [weak self] in
+            self?.searchBar.endEditing(true)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -60,22 +64,50 @@ class SelectionView: TableFactoryCardView {
         var isSelected = (indexPath.row == selectedIndex)
         switch type {
         case .category:
-            cell.setCategory(category: categories?[indexPath.row])
+            cell.setCategory(category: customCategories?[indexPath.row])
         case .subcategory:
-            cell.setSubcategory(subcategory: subcategories?[indexPath.row])
+            cell.setSubcategory(subcategory: customSubcategories?[indexPath.row])
         case .option:
-            isSelected = (isSelected || (selectedIndex == -1 && ((indexPath.row == (options?.count ?? 0) - 1))))
-            cell.setOption(option: options?[indexPath.row])
+            isSelected = (isSelected || (selectedIndex == -1 && ((indexPath.row == (customOptions?.count ?? 0) - 1))))
+            cell.setOption(option: customOptions?[indexPath.row])
         }
         cell.setCheckMark(isSelected: isSelected)
         return cell as! t
+    }
+    
+    private func handleSearch(searchText: String) {
+        let isEmpty = searchText.trimmingCharacters(in: .whitespaces).isEmpty
+        switch type {
+        case .category:
+            customCategories = isEmpty ? allCategories : allCategories?.filter({$0.name.lowercased().contains(searchText.lowercased())})
+        case .subcategory:
+            customSubcategories = isEmpty ? allSubcategories : allSubcategories?.filter({$0.name.lowercased().contains(searchText.lowercased())})
+        case .option:
+            customOptions = isEmpty ? allOptions : allOptions?.filter({$0.name.lowercased().contains(searchText.lowercased())})
+        }
+        tableView.reloadData()
+    }
+    
+    private func handleItemSelection(index: Int) {
+        searchBar.endEditing(true)
+        var selectedIndex: Int?
+        switch type {
+        case .category:
+            selectedIndex = allCategories?.firstIndex(where: {$0.id == customCategories?[index].id})
+        case .subcategory:
+            selectedIndex = allSubcategories?.firstIndex(where: {$0.id == customSubcategories?[index].id})
+        case .option:
+            selectedIndex = allOptions?.firstIndex(where: {$0.id == customOptions?[index].id})
+        }
+        guard let selectedIndex = selectedIndex else { return }
+        didSelectItem?(selectedIndex)
     }
 }
 
 //MARK: - UITableViewDataSource
 extension SelectionView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = categories?.count ?? subcategories?.count ?? options?.count ?? 0
+        let count = customCategories?.count ?? customSubcategories?.count ?? customOptions?.count ?? 0
         return count
     }
     
@@ -87,6 +119,17 @@ extension SelectionView: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension SelectionView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectItem?(indexPath.row)
+        handleItemSelection(index: indexPath.row)
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension SelectionView: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        handleSearch(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }
